@@ -103,14 +103,14 @@
 
         }, false);
 
-        // var formGenre = document.getElementById('search-genre');
-        // formGenre.addEventListener('submit', function (e) {
-        //     showCompletion = false;
-        //     e.preventDefault();
-        //     var search = document.getElementById('genre-search');
-        //     var genreName = search.value.trim();
-        //     initRootWithGenre(genreName);
-        // }, false);
+        var formTrack = document.getElementById('search-track');
+        formTrack.addEventListener('submit', function (e) {
+            showCompletion = false;
+            e.preventDefault();
+            var search = document.getElementById('track-search');
+            var trackName = search.value.trim();
+            initRootWithTrack(trackName);
+        }, false);
 
         // var formGenre = document.getElementById('search-genre');
         // formGenre.addEventListener('submit', function (e) {
@@ -149,6 +149,11 @@
     function initRootWithGenre(genre) {
         dndTree.setRootGenre(genre);
         $('#artist-search').val('');
+    }
+
+    function initRootWithTrack(track) {
+        dndTree.setRootTrack(track);
+        $('#track-search').val('');
     }
 
     function initRootWithData(data) {

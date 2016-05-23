@@ -44,6 +44,18 @@ var localProxyApi = function (serverBasePath) {
     })
   };
 
+    var searchTracks = function(q, params) {
+    var url = 'https://api.spotify.com/v1/search?type=track';
+    var data = params
+    data['q'] = q
+    data['type'] = 'track'
+
+    return $.ajax({
+        url: url,
+        data: data
+    })
+  };
+
   return {
     getArtistRelatedArtists: getArtistRelatedArtists,
     getArtist: getArtist,
