@@ -18,7 +18,8 @@ var localProxyApi = function (serverBasePath) {
   };
 
   var getArtist = function(artistId) {
-    var url = serverBasePath + '/spotify/artists/' + artistId;
+    var url = 'https://api.spotify.com/v1/artists/' + artistId;
+    //var url = serverBasePath + '/spotify/artists/' + artistId;
     return $.ajax({
         url: url
     })
@@ -32,7 +33,7 @@ var localProxyApi = function (serverBasePath) {
   };
 
   var searchArtists = function(q, params) {
-    var url = serverBasePath + '/spotify/search';
+    var url = 'https://api.spotify.com/v1/search?type=artist';
     var data = params
     data['q'] = q
     data['type'] = 'artist'

@@ -103,6 +103,14 @@
 
         }, false);
 
+        // var formGenre = document.getElementById('search-genre');
+        // formGenre.addEventListener('submit', function (e) {
+        //     showCompletion = false;
+        //     e.preventDefault();
+        //     var search = document.getElementById('genre-search');
+        //     var genreName = search.value.trim();
+        //     initRootWithGenre(genreName);
+        // }, false);
 
         // var formGenre = document.getElementById('search-genre');
         // formGenre.addEventListener('submit', function (e) {
