@@ -1,15 +1,3 @@
-// var Spotify = require('spotify-web-api-js');
-// var s = new Spotify();
-
-// var spotifyApi = new SpotifyWebApi();
-
-// spotifyApi.getArtistAlbums('43ZHCT0cAZBISjO8DG9PnE', function(err, data) {
-//   if (err) { console.error(err); console.log("hello"); }
-//   else console.log('Artist albums', data);
-
-// });
-
-
 // main.js
 
 /* global SpotifyWebApi, dndTree, $, geoplugin_countryCode, Promise, google, setRepeatArtists */
@@ -26,7 +14,7 @@
     var userCountry = "US";
 
     //replace with configured servers uri
-    var serverBasePath = "http://localhost:8000";
+    var serverBasePath = "https://api.spotify.com"; //"http://localhost:8000";
 
     var localApi = new localProxyApi(serverBasePath);
     var spotifyWebApi = new SpotifyWebApi()
@@ -59,7 +47,8 @@
     function initContainer() {
         var initArtistId = stripTrailingSlash(qs('artist_id')),
             initGenre = stripTrailingSlash(qs('genre')),
-            initEntry = stripTrailingSlash(qs('tree'));
+            initEntry = stripTrailingSlash(qs('tree')),
+            initTrackId = stripTrailingSlash(qs('track'));
 
         if (initEntry) {
             $.ajax({
@@ -70,6 +59,9 @@
         }
         else if (initArtistId) {
             currentApi.getArtist(initArtistId).then(initRootWithArtist);
+        } else if (initTrackId) {
+        	currentApi.getAudioFeatures(initTrackId).then(initRootWithTrack);
+
         } else if (initGenre) {
             initRootWithGenre(initGenre);
         } else {
@@ -327,6 +319,27 @@
         });
     }
 
+    // function getAudioFeaturesForTrack(trackName) {
+    //     return new Promise(function (resolve, reject) {
+    //         return $.ajax({
+    //             url: getGenreArtistsUri(encodeURIComponent(genreName.toLowerCase()))
+    //         }).then(function (data) {
+    //             var idsToRequest = [];
+    //             data.artists.forEach(function (artist) {
+    //                 if (artist.foreign_ids) {
+    //                     idsToRequest.push(getIdFromArtistUri(artist.foreign_ids[0].foreign_id));
+    //                 }
+    //             });
+    //             return currentApi.getAudioFeatures(idsToRequest).then(function (data) {
+    //                 //Sort in popularity order
+    //                 resolve(data.artists.sort(function (a, b) {
+    //                     return b.popularity - a.popularity;
+    //                 }).slice(0, numberOfArtistsToShow));
+    //             });
+    //         });
+    //     });
+    // }
+
     function changeNumberOfArtists(value) {
         numberOfArtistsToShow = value;
         document.getElementById('range-indicator').innerHTML = value;
@@ -443,7 +456,60 @@
         //             return false;
         //         }
         //     });
-    });
+
+
+        $('#track-search')
+            // don't navigate away from the field on tab when selecting an item
+            .bind('keydown', function (event) {
+                showCompletion = true;
+                if (event.keyCode === $.ui.keyCode.TAB &&
+                    $(this).autocomplete('instance').menu.active) {
+                    event.preventDefault();
+                }
+            })
+            .autocomplete({
+                minLength: 0,
+                source: function (request, response) {
+                    currentApi.searchTracks(request.term + '*', {'limit': 50, market: userCountry}).then(function (data) {
+                        if (data.tracks && data.tracks.items.length) {
+                            var res = [];
+                            data.tracks.items.forEach(function (track) {
+                                res.push(track);
+                            });
+                            if (showCompletion) {
+                                response(res);
+                            } else {
+                                response([]);
+                            }
+                        }
+                    }, function (err) {
+                        if (err.status == 400) {
+                            setUnavailCountryErrorMessage();
+                            return;
+                        }
+                    });
+                },
+                focus: function () {
+                    // prevent value inserted on focus
+                    return false;
+                },
+                select: function (event, ui) {
+                    $('#track-search').val(ui.item.name);
+                    initRootWithTrack(ui.item);
+                    return false;
+                }
+            })
+            .autocomplete('instance')._renderItem = function (ul, item) {
+                if (!item) {
+                    console.log('no item');
+                    return;
+                }
+                return $('<li></li>')
+                    .data('item.autocomplete', item)
+                    .append(createAutoCompleteDiv(item))
+                    .appendTo(ul);
+            }
+        });
 
     function drawChart(popularity) {
         var popData = google.visualization.arrayToDataTable([

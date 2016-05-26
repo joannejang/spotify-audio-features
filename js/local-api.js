@@ -44,7 +44,7 @@ var localProxyApi = function (serverBasePath) {
     })
   };
 
-    var searchTracks = function(q, params) {
+  var searchTracks = function(q, params) {
     var url = 'https://api.spotify.com/v1/search?type=track';
     var data = params
     data['q'] = q
@@ -56,12 +56,21 @@ var localProxyApi = function (serverBasePath) {
     })
   };
 
+  var getAudioFeatures = function(trackId) {
+    var url = serverBasePath + '/v1/audio-features/' + trackId;
+    return $.ajax({
+      url: url
+    })
+  };
+
   return {
     getArtistRelatedArtists: getArtistRelatedArtists,
     getArtist: getArtist,
     getArtists: getArtists,
     searchArtists: searchArtists,
-    getArtistTopTracks: getArtistTopTracks
+    getArtistTopTracks: getArtistTopTracks,
+    getAudioFeatures: getAudioFeatures,
+    searchTracks: searchTracks
   }
 
 };
