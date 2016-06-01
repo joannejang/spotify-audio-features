@@ -33,7 +33,7 @@ var localProxyApi = function (serverBasePath) {
   };
 
   var searchArtists = function(q, params) {
-    var url = 'https://api.spotify.com/v1/search?type=artist';
+    var url = serverBasePath + '/v1/search?type=artist';
     var data = params
     data['q'] = q
     data['type'] = 'artist'
@@ -45,7 +45,7 @@ var localProxyApi = function (serverBasePath) {
   };
 
   var searchTracks = function(q, params) {
-    var url = 'https://api.spotify.com/v1/search?type=track';
+    var url = serverBasePath + '/v1/search?type=track';
     var data = params
     data['q'] = q
     data['type'] = 'track'
@@ -56,9 +56,19 @@ var localProxyApi = function (serverBasePath) {
     })
   };
 
+  var getTrack = function(trackId) {
+    var url = serverBasePath + '/v1/tracks/' + trackId;
+    return $.ajax({
+        url: url
+    })
+  };
+
   var getAudioFeatures = function(trackId) {
     var url = serverBasePath + '/v1/audio-features/' + trackId;
     return $.ajax({
+      headers: {
+       'Authorization': 'Bearer ' + 'BQA2W5jToEVQebfDltyIvUKdXwxFqoSVI3r8yNqAuv7xQoBE3LJ-znGwwndW5ydzBXAYblqXHTPs81RwCg-MNVzTx1hOiJcFK4FCdJKuT_af0UVFOx9n33Y01981mul7T8WEg84H_33lB4M'
+      },
       url: url
     })
   };
@@ -70,7 +80,8 @@ var localProxyApi = function (serverBasePath) {
     searchArtists: searchArtists,
     getArtistTopTracks: getArtistTopTracks,
     getAudioFeatures: getAudioFeatures,
-    searchTracks: searchTracks
+    searchTracks: searchTracks,
+    getTrack: getTrack
   }
 
 };

@@ -89,6 +89,8 @@
                 userCountry
                 ).then(function (data) {
                 if (data.artists && data.artists.items.length) {
+                    console.log("hi");
+                    console.log(data.artists.items);
                     initRootWithArtist(data.artists.items[0]);
                 }
             });
@@ -100,8 +102,16 @@
             showCompletion = false;
             e.preventDefault();
             var search = document.getElementById('track-search');
-            var trackName = search.value.trim();
-            initRootWithTrack(trackName);
+            currentApi.searchTracks(
+                search.value.trim(),
+                userCountry
+                ).then(function (data) {
+                if (data.tracks && data.tracks.items.length) {
+                    console.log(data.tracks.items[0]);
+                    consoleLogAudioFeatures(ui.item);
+                    initRootWithTrack(data.tracks.items[0]);
+                }
+            });
         }, false);
 
         // var formGenre = document.getElementById('search-genre');
@@ -134,6 +144,8 @@
    // loadAllGenres();
 
     function initRootWithArtist(artist) {
+        console.log("hi from 146");
+        console.log(artist);
         dndTree.setRoot(artist);
         $('#genre-search').val('');
     }
@@ -144,8 +156,31 @@
     }
 
     function initRootWithTrack(track) {
+        console.log("hi from 158");
+        console.log(track);
+        console.log(track.id);
+
+        currentApi.searchTracks(
+            search.value.trim(),
+            userCountry
+            ).then(function (data) {
+            if (data.tracks && data.tracks.items.length) {
+            console.log(data.tracks.items[0]);
+            initRootWithTrack(data.tracks.items[0]);
+        }
+    });
+
         dndTree.setRootTrack(track);
         $('#track-search').val('');
+    }
+
+    function consoleLogAudioFeatures(track) {
+        console.log("hi from 177");
+        console.log(track.id);
+        currentApi.getAudioFeatures(track.id).then(function (data) {
+            console.log(data);
+        });
+        console.log("bye from 183");
     }
 
     function initRootWithData(data) {
@@ -345,7 +380,7 @@
         document.getElementById('range-indicator').innerHTML = value;
     }
 
-    function createAutoCompleteDiv(artist) {
+    function createAutoCompleteDivArtist(artist) {
         if (!artist) {
             return;
         }
@@ -357,6 +392,20 @@
             '</div>';
         return val;
     }
+
+    function createAutoCompleteDivTrack(track) {
+        if (!track) {
+            return;
+        }
+        var val = '<div class="autocomplete-item">' +
+            '<div class="artist-icon-container">' +
+            '<img src="' + getSuitableImage(track.album.images) + '" class="circular artist-icon" />' +
+            '<div class="artist-label">' + track.name + '</div>' +
+            '</div>' +
+            '</div>';
+        return val;
+    }
+
 
     var unavailCountryMessageSet = false;
 
@@ -421,7 +470,7 @@
                 }
                 return $('<li></li>')
                     .data('item.autocomplete', item)
-                    .append(createAutoCompleteDiv(item))
+                    .append(createAutoCompleteDivArtist(item))
                     .appendTo(ul);
             };
 
@@ -474,6 +523,7 @@
                         if (data.tracks && data.tracks.items.length) {
                             var res = [];
                             data.tracks.items.forEach(function (track) {
+                                //console.log(track);
                                 res.push(track);
                             });
                             if (showCompletion) {
@@ -495,7 +545,9 @@
                 },
                 select: function (event, ui) {
                     $('#track-search').val(ui.item.name);
+                    consoleLogAudioFeatures(ui.item);
                     initRootWithTrack(ui.item);
+                    //consoleLogAudioFeatures(ui.item);
                     return false;
                 }
             })
@@ -506,7 +558,7 @@
                 }
                 return $('<li></li>')
                     .data('item.autocomplete', item)
-                    .append(createAutoCompleteDiv(item))
+                    .append(createAutoCompleteDivTrack(item))
                     .appendTo(ul);
             }
         });
