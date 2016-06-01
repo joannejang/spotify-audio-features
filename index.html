@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
     <title>Audio Features Fun</title>
     <meta charset="utf-8">
     <!--<meta property="og:image" content="https://artistexplorer.spotify.com/img/artistexplorer.png">
@@ -9,8 +10,46 @@
     <link rel="stylesheet" href="css/jquery-ui.min.css">
     <link rel="stylesheet" href="css/sp-bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto">
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+    <style>
+     .container {
+       text-align: center;
+     }
+     
+     .container div {
+       display: inline-block;
+       padding: 20px;
+     }
 
+     /* Tooltip container */
+    .tooltip {
+        position: relative;
+        display: inline-block;
+        border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+    }
+
+    /* Tooltip text */
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 120px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        padding: 5px 0;
+        border-radius: 6px;
+     
+        /* Position the tooltip text - see examples below! */
+        position: absolute;
+        z-index: 1;
+    }
+
+    /* Show the tooltip text when you mouse over the tooltip container */
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+    }
+     </style>
   </head>
   <body>
   <div>Audio Features Fun</div>
@@ -27,14 +66,101 @@
             <input id="genre-search" class="form-control" placeholder="Search for a Genre">
           </form>-->
         </div>
+        <div>
+          <ul>
+            <li class="tooltip">Danceability
+              <span class="tooltiptext">Tooltip text</span>
+            </li>
+            <li class="tooltip">Energy
+              <span class="tooltiptext">Tooltip text</span>
+            </li>
+            <li class="tooltip">Loudness
+              <span class="tooltiptext">Tooltip text</span>
+            </li>
+            <li class="tooltip">Speechiness
+              <span class="tooltiptext">Tooltip text</span>
+            </li>
+            <li class="tooltip">Acousticness
+              <span class="tooltiptext">Tooltip text</span>
+            </li>
+            <li class="tooltip">Instrumentalness
+              <span class="tooltiptext">Tooltip text</span>
+            </li>
+            <li class="tooltip">Liveness
+              <span class="tooltiptext">Tooltip text</span>
+            </li>
+            <li class="tooltip">Valence
+              <span class="tooltiptext">Tooltip text</span>
+            </li>
+            <li class="tooltip">Tempo
+              <span class="tooltiptext">Tooltip text</span>
+            </li>
+          </ul>
+        </div>
         <div id="tree-container"></div>
-      </div>
+          <div>
+            <label style="display: inline-block; width: 100px; text-align: left">
+               Pick an audio feature to visualize using bar chart
+            </label>
+            <select id="bar_selection">
+              <option value="dancability">Danceability</option> 
+              <option value="energy">Energy</option> 
+              <option value="loudness">Loudness</option>
+              <option value="speechiness">Speechiness</option>
+              <option value="acousticness">Acousticness</option>
+              <option value="instrumentalness">Instrumentalness</option>
+              <option value="liveness">Liveness</option>
+              <option value="valence">Valence</option>
+              <option value="tempo">Tempo</option>
+            </select>
+          </div>
+          <svg class="bar"></svg>
+          <div>
+            <label style="display: inline-block; width: 100px; text-align: left">
+               Pick an audio feature to visualize using gauge chart
+            </label>
+            <select id="gauge_selection">
+              <option value="dancability">Danceability</option> 
+              <option value="energy">Energy</option> 
+              <option value="loudness">Loudness</option>
+              <option value="speechiness">Speechiness</option>
+              <option value="acousticness">Acousticness</option>
+              <option value="instrumentalness">Instrumentalness</option>
+              <option value="liveness">Liveness</option>
+              <option value="valence">Valence</option>
+              <option value="tempo">Tempo</option>
+            </select>
+          </div>
+          <div id="chart_div1" style="width: 400px; height: 120px;"></div>
+          <div id="chart_div2" style="width: 400px; height: 120px;"></div>
+          <div class="container">
+              <div>
+                <label style="display: inline-block; width: 100px; text-align: left">
+                   Pick an audio feature to visualize using radial progress chart
+                </label>
+                <select id="radial_selection">
+                  <option value="dancability">Danceability</option> 
+                  <option value="energy">Energy</option> 
+                  <option value="loudness">Loudness</option>
+                  <option value="speechiness">Speechiness</option>
+                  <option value="acousticness">Acousticness</option>
+                  <option value="instrumentalness">Instrumentalness</option>
+                  <option value="liveness">Liveness</option>
+                  <option value="valence">Valence</option>
+                  <option value="tempo">Tempo</option>
+                </select>
+              </div>
+              <div id="progress1"></div>
+              <div id="progress2"></div>
+          </div>
+        </div>
 
 
 
 
 
   </body>
+    <script src="https://cdn.rawgit.com/bm-w/d3/master/d3.js"></script>
     <script src="./bower_components/spotify-web-api-js/src/spotify-web-api.js"></script>
     <script src="./bower_components/knockout/dist/knockout.js"></script>
     <script src="./js/lib/jquery-1.10.2.min.js"></script>
@@ -48,6 +174,144 @@
     <script src="js/oauth-config.js"></script>
     <script src="js/local-api.js"></script>
     <script src="js/main.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="./js/index.js"></script>
+    <script type="text/javascript">
+      var dataset = [{dancability: 0.5, energy: 0.3}, {dancability: 0.8, energy: 0.9}]
+      
+
+      var bar = d3.select('.bar');
+      bar.selectAll("rect").data(dataset).enter().append("rect").attr("x", function(d, i) {
+        return i * 41;
+      }).attr("y", function(d) {
+        return 200 - d.dancability * 200;
+      }).attr("width", 40).attr("height", function(d) {
+        return d.dancability * 200;
+      })
+
+
+
+
+
+      google.charts.load('current', {'packages':['gauge']});
+      google.charts.setOnLoadCallback(drawChart);
+      var chart1;
+      var chart2;
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Label', 'Value'],
+          ['Dancability', 0.8]
+        ]);
+
+        var options = {
+          width: 400, height: 120,
+          redFrom: 0.9, redTo: 1,
+          yellowFrom:0.75, yellowTo: 0.9,
+          minorTicks: 0.05,
+          max:1
+        };
+
+        chart1 = new google.visualization.Gauge(document.getElementById('chart_div1'));
+
+        chart1.draw(data, options);
+
+        chart2 = new google.visualization.Gauge(document.getElementById('chart_div2'));
+
+        chart2.draw(data, options);
+      }
+
+      var progress1 =  new RadialProgressChart('#progress1', {
+        diameter: 100,
+        max: 1,
+        round: false,
+        series: [{
+          value: 0.8,
+          color: ['red', '#7CFC00']
+        }],
+        center: function(d) {
+          return d.toFixed(2)
+        }
+      });
+
+      var progress2 =  new RadialProgressChart('#progress2', {
+        diameter: 100,
+        max: 1,
+        round: false,
+        series: [{
+          value: 0.8,
+          color: ['red', '#7CFC00']
+        }],
+        center: function(d) {
+          return d.toFixed(2)
+        }
+      });
+
+      d3.select('#bar_selection').on('change', function() {
+        feature = d3.select(this).property('value');
+        update_bar(dataset, feature);
+      });
+
+      function update_bar(dataset, feature) {
+        var bar = d3.select('.bar');
+        var filtered_dataset = dataset.map(function(obj) {
+          return obj[feature];
+        })
+        console.log(filtered_dataset);
+        bar.selectAll("rect").data(filtered_dataset).transition().attr("x", function(d, i) {
+          return i * 41;
+        }).attr("y", function(d) {
+          return 200 - d * 200;
+        }).attr("width", 40).attr("height", function(d) {
+          return d * 200;
+        })
+        bar.selectAll("rect").data(filtered_dataset).exit().remove();
+      }
+
+      d3.select('#gauge_selection').on('change', function() {
+        feature = d3.select(this).property('value');
+        update_gauge(dataset, feature);
+      });
+
+      function update_gauge(dataset, feature) {
+        var data1 = google.visualization.arrayToDataTable([
+          ['Label', 'Value'],
+          [feature, dataset[0][feature]]
+        ]);
+
+        var data2 = google.visualization.arrayToDataTable([
+          ['Label', 'Value'],
+          [feature, dataset[1][feature]]
+        ]);
+
+        var options = {
+          width: 400, height: 120,
+          redFrom: 0.9, redTo: 1,
+          yellowFrom:0.75, yellowTo: 0.9,
+          minorTicks: 0.05,
+          max:1
+        };
+
+
+        chart1.draw(data1, options);
+
+        chart2.draw(data2, options);
+      }
+
+      d3.select('#radial_selection').on('change', function() {
+        feature = d3.select(this).property('value');
+        update_radial(dataset, feature);
+      });
+
+      function update_radial(dataset, feature) {
+        progress1.update(dataset[0][feature]);
+        progress2.update(dataset[1][feature]);
+      }
+
+
+
+
+    </script>
 
 
 
