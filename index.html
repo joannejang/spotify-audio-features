@@ -267,11 +267,18 @@
         var filtered_dataset = dataset.map(function(obj) {
           return obj[feature];
         })
-        console.log(filtered_dataset);
+        var y = d3.scale.linear().domain([0, 1]).range([0, 200]);
+        if (feature === "loudness") {
+          y = d3.scale.linear().domain([-60, 0]).range([0, 200]);
+        }
+        if (feature === "liveness") {
+          y = d3.scale.linear().domain([0, 0.3]).range([0, 200]);
+        }
+        
         bar.selectAll("rect").data(filtered_dataset).transition().attr("x", function(d, i) {
           return i * 41;
         }).attr("y", function(d) {
-          return 200 - d * 200;
+          return 200 - y(d) * 200;
         }).attr("width", 40).attr("height", function(d) {
           return d * 200;
         })
