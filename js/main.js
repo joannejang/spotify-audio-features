@@ -234,10 +234,10 @@ var two_tracks = track_one + track_two;
 
     function update_track(dataset, one) {
         if (one) {
-            var value = '<img src="' + getSuitableImage(dataset[0].album.images) + '"/>';
+            var value = '<div style="width: 400px; height: 400px;"><img src="' + getSuitableImage(dataset[0].album.images) + '"/></div>';
             document.getElementById('track-one').innerHTML = value;            
         } else {
-            var value = '<img src="' + getSuitableImage(dataset[1].album.images) + '"/>';
+            var value = '<div style="width: 400px; height: 400px;"><img src="' + getSuitableImage(dataset[1].album.images) + '"/></div>';
             document.getElementById('track-two').innerHTML = value;            
         }
     }
@@ -696,7 +696,7 @@ var two_tracks = track_one + track_two;
     }
 
     function getSuitableImage(images) {
-        var minSize = 64;
+        var minSize = 200; //64;
         if (images.length === 0) {
             return 'img/spotify.jpeg';
         }
