@@ -57,10 +57,10 @@
 <!-- search -->
         <div id="search" class="row">
           <form id="search-artist" class="form-horizontal col-sm-6 col-md-6" role="form">
-            <input id="artist-search" class="form-control" placeholder="Search for an Artist">
+            <input id="artist-search" class="form-control" placeholder="Search for Track 1">
           </form>
           <form id="search-track" class="form-horizontal col-sm-6 col-md-6" role="form">
-            <input id="track-search" class="form-control" placeholder="Search for a Track">
+            <input id="track-search" class="form-control" placeholder="Search for Track 2">
           </form>
           <!--<form id="search-genre" class="form-horizontal col-sm-6 col-md-6" role="form">
             <input id="genre-search" class="form-control" placeholder="Search for a Genre">
@@ -177,6 +177,9 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="./js/index.js"></script>
     <script type="text/javascript">
+      console.log("printing from index.html");
+      console.log(track_one);
+      console.log("should be the bottom bread for track_one sandwich");
       var dataset = [{dancability: 0.5, energy: 0.3}, {dancability: 0.8, energy: 0.9}]
       
 

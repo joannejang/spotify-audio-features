@@ -67,7 +67,7 @@ var localProxyApi = function (serverBasePath) {
     var url = serverBasePath + '/v1/audio-features/' + trackId;
     return $.ajax({
       headers: {
-       'Authorization': 'Bearer ' + 'BQDnJoSeH16ITXjG19hOqc4y1n5_W52PyaYg10d1MnEte1n3JJKcDrZDpsq5aBgTP4kvp-DnOex8bX06qBM2nYoEzus9snzl_imAx6YHZzxD_LKyOAcCo4wKylKfeco1_ygv3vQ2VZ335gY'
+       'Authorization': 'Bearer ' + 'BQDORwnAzdT1KMsF_d4NX5lVGmKnBCurEjbfgztdnp-e37KdsA9pzm634DYnqb5v5Cue94A5nr768ocGOkWg7LkNQ2X92U-TfxFjjHyeeXrcQ8U0Xqb5nqUeeqUwMmckG6-Ij6G_uEtNcIM'
       },
       url: url
     })
