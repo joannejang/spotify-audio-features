@@ -178,8 +178,8 @@
     <script src="./js/index.js"></script>
     <script type="text/javascript">
       var dataset = [{danceability: 0.818, energy: 0.732, acousticness:0.0335, instrumentalness:0.0000495, liveness:0.19,
-        loudness:-4.474, speechiness:0.0334, tempo:119.002, valence:0.664}, {danceability: 0.685, energy: 0.466, acousticness:0.0335, instrumentalness:0.00000206, liveness:0.0915,
-        loudness:-9.074, speechiness:0.0304, tempo:
+        loudness:4.474, speechiness:0.0334, tempo:119.002, valence:0.664}, {danceability: 0.685, energy: 0.466, acousticness:0.0335, instrumentalness:0.00000206, liveness:0.0915,
+        loudness:9.074, speechiness:0.0304, tempo:
 79.936, valence:0.37}]
 
       var bar = d3.select('.bar');
@@ -191,19 +191,20 @@
         return d.danceability * 200;
       })
 
-
-
-
-
       google.charts.load('current', {'packages':['gauge']});
       google.charts.setOnLoadCallback(drawChart);
       var chart1;
       var chart2;
       function drawChart() {
 
-        var data = google.visualization.arrayToDataTable([
+        var data1 = google.visualization.arrayToDataTable([
           ['Label', 'Value'],
-          ['Danceability', 0.8]
+          ['Danceability', dataset[0].danceability]
+        ]);
+
+        var data2 = google.visualization.arrayToDataTable([
+          ['Label', 'Value'],
+          ['Danceability', dataset[1].danceability]
         ]);
 
         var options = {
@@ -216,11 +217,11 @@
 
         chart1 = new google.visualization.Gauge(document.getElementById('chart_div1'));
 
-        chart1.draw(data, options);
+        chart1.draw(data1, options);
 
         chart2 = new google.visualization.Gauge(document.getElementById('chart_div2'));
 
-        chart2.draw(data, options);
+        chart2.draw(data2, options);
       }
 
       var progress1 =  new RadialProgressChart('#progress1', {
@@ -228,7 +229,7 @@
         max: 1,
         round: false,
         series: [{
-          value: 0.8,
+          value: dataset[0].danceability,
           color: ['red', '#7CFC00']
         }],
         center: function(d) {
@@ -241,7 +242,7 @@
         max: 1,
         round: false,
         series: [{
-          value: 0.8,
+          value: dataset[1].danceability,
           color: ['red', '#7CFC00']
         }],
         center: function(d) {
@@ -311,6 +312,7 @@
       }
 
       function update_all(dataset) {
+        console.log("called");
         var bar_feature = d3.select('#bar_selection').property('value');
         update_bar(dataset, bar_feature);
         var gauge_feature =  d3.select('#gauge_selection').property('value');
