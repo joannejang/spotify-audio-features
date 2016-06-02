@@ -177,9 +177,10 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="./js/index.js"></script>
     <script type="text/javascript">
-      var dataset = [{danceability: 0.818, energy: 0.3}, {danceability: 0.8, energy: 0.9}]
-
-      
+      var dataset = [{danceability: 0.818, energy: 0.732, acousticness:0.0335, instrumentalness:0.0000495, liveness:0.19,
+        loudness:-4.474, speechiness:0.0334, tempo:119.002, valence:0.664}, {danceability: 0.685, energy: 0.466, acousticness:0.0335, instrumentalness:0.00000206, liveness:0.0915,
+        loudness:-9.074, speechiness:0.0304, tempo:
+79.936, valence:0.37}]
 
       var bar = d3.select('.bar');
       bar.selectAll("rect").data(dataset).enter().append("rect").attr("x", function(d, i) {
