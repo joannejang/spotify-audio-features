@@ -138,7 +138,7 @@ var two_tracks = track_one + track_two;
                     initRootWithTrack(data.tracks.items[0]);
                 }
             });
-                update_all(dataset);
+               // update_all(dataset);
 
         }, false);
 
@@ -214,13 +214,17 @@ var two_tracks = track_one + track_two;
                 //track_one = track;
                 for (var key in data) track_one[key]=data[key];
                 dataset[0] = track_one;
+                console.log("AFTER UPDATING DATASET's one: ");
+                console.log(dataset);
             } else {
                 console.log("TWO");
                 for (var key in data) track_two[key] = data[key];
                 //track_two = track;
                 dataset[1] = track_two;
+                console.log("AFTER UPDATING DATASET's two: ");
+                console.log(dataset);
             }
-            console.log(data);
+            update_all(dataset);
         });
         console.log("bye from 183");
     }
