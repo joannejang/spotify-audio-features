@@ -263,6 +263,10 @@ var two_tracks = track_one + track_two;
         return str.replace(/\w\S*/g, function (txt) {return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
     }
 
+    function _playTrack(track) {
+        Player.playForTrack(track);
+    }
+
     var getInfoTimeoutid;
     function getInfo(artist) {
         getInfoTimeoutid = window.setTimeout(function () {
@@ -293,14 +297,14 @@ var two_tracks = track_one + track_two;
 
         self.playTrack = function() {
             var self2 = this;
-            var track = {
+            var track_playing = {
                 'preview_url': this.preview_url,
                 'id': this.id,
             }
             playPopTrackTimeoutId = window.setTimeout(function () {
                 _playTrack(track);
                 ko.utils.arrayForEach(self.topTracks(), function(track) {
-                    track.isPlaying(false);
+                    track_playing.isPlaying(false);
                 });
                 self2.isPlaying(true);
             }, 500);
