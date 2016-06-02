@@ -216,6 +216,7 @@ var two_tracks = track_one + track_two;
                 dataset[0] = track_one;
                 console.log("AFTER UPDATING DATASET's one: ");
                 console.log(dataset);
+                update_track(dataset, true);
             } else {
                 console.log("TWO");
                 for (var key in data) track_two[key] = data[key];
@@ -223,10 +224,22 @@ var two_tracks = track_one + track_two;
                 dataset[1] = track_two;
                 console.log("AFTER UPDATING DATASET's two: ");
                 console.log(dataset);
+                update_track(dataset, false);
             }
             update_all(dataset);
         });
         console.log("bye from 183");
+
+    }
+
+    function update_track(dataset, one) {
+        if (one) {
+            var value = '<img src="' + getSuitableImage(dataset[0].album.images) + '"/>';
+            document.getElementById('track-one').innerHTML = value;            
+        } else {
+            var value = '<img src="' + getSuitableImage(dataset[1].album.images) + '"/>';
+            document.getElementById('track-two').innerHTML = value;            
+        }
     }
 
     function initRootWithData(data) {
@@ -726,8 +739,8 @@ var two_tracks = track_one + track_two;
         }
         return localStorage.getItem('ae_token', '');
     }
-
-    ko.applyBindings(loginModel, document.getElementById('navbar-collapse-1'));
+    // ko.cleanNode(document.getElementById('navbar-collapse-1'));
+    // ko.applyBindings(loginModel, document.getElementById('navbar-collapse-1'));
 
 
     var errorBoxModel = function() {
@@ -736,7 +749,7 @@ var two_tracks = track_one + track_two;
     }
 
     var errorBoxModel = new errorBoxModel();
-    ko.applyBindings(errorBoxModel, document.getElementById('error-modal'));
+    //ko.applyBindings(errorBoxModel, document.getElementById('error-modal'));
 
 
     function login() {
