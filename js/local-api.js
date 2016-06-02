@@ -1,3 +1,4 @@
+var OAuthToken = "BQASpQDqTK-y9s3GvMg-wrmHt32nDdsJedwVi9cwWqwYHFC2wUYTQ-DG5Ad0PWxTd7pCqQdXwtqB5Rch_18p_nWYTva4Yd5qZR2SwMB2iQwvi1R5H882IOR7Xr1ESBslc0vknvAzvo4SgRA";
 var localProxyApi = function (serverBasePath) {
 
   var getArtistRelatedArtists = function(artistId) {
@@ -67,7 +68,7 @@ var localProxyApi = function (serverBasePath) {
     var url = serverBasePath + '/v1/audio-features/' + trackId;
     return $.ajax({
       headers: {
-       'Authorization': 'Bearer ' + 'BQDORwnAzdT1KMsF_d4NX5lVGmKnBCurEjbfgztdnp-e37KdsA9pzm634DYnqb5v5Cue94A5nr768ocGOkWg7LkNQ2X92U-TfxFjjHyeeXrcQ8U0Xqb5nqUeeqUwMmckG6-Ij6G_uEtNcIM'
+       'Authorization': 'Bearer ' + OAuthToken
       },
       url: url
     })

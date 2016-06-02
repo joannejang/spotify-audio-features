@@ -216,6 +216,7 @@ var two_tracks = track_one + track_two;
                 dataset[0] = track_one;
                 console.log("AFTER UPDATING DATASET's one: ");
                 console.log(dataset);
+                update_track(dataset, true);
             } else {
                 console.log("TWO");
                 for (var key in data) track_two[key] = data[key];
@@ -223,10 +224,22 @@ var two_tracks = track_one + track_two;
                 dataset[1] = track_two;
                 console.log("AFTER UPDATING DATASET's two: ");
                 console.log(dataset);
+                update_track(dataset, false);
             }
             update_all(dataset);
         });
         console.log("bye from 183");
+
+    }
+
+    function update_track(dataset, one) {
+        if (one) {
+            var value = '<div style="width: 400px; height: 400px;"><img src="' + getSuitableImage(dataset[0].album.images) + '"/></div>';
+            document.getElementById('track-one').innerHTML = value;            
+        } else {
+            var value = '<div style="width: 400px; height: 400px;"><img src="' + getSuitableImage(dataset[1].album.images) + '"/></div>';
+            document.getElementById('track-two').innerHTML = value;            
+        }
     }
 
     function initRootWithData(data) {
@@ -248,6 +261,10 @@ var two_tracks = track_one + track_two;
 
     function toTitleCase(str) {
         return str.replace(/\w\S*/g, function (txt) {return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+    }
+
+    function _playTrack(track) {
+        Player.playForTrack(track);
     }
 
     var getInfoTimeoutid;
@@ -280,14 +297,14 @@ var two_tracks = track_one + track_two;
 
         self.playTrack = function() {
             var self2 = this;
-            var track = {
+            var track_playing = {
                 'preview_url': this.preview_url,
                 'id': this.id,
             }
             playPopTrackTimeoutId = window.setTimeout(function () {
                 _playTrack(track);
                 ko.utils.arrayForEach(self.topTracks(), function(track) {
-                    track.isPlaying(false);
+                    track_playing.isPlaying(false);
                 });
                 self2.isPlaying(true);
             }, 500);
@@ -683,7 +700,7 @@ var two_tracks = track_one + track_two;
     }
 
     function getSuitableImage(images) {
-        var minSize = 64;
+        var minSize = 200; //64;
         if (images.length === 0) {
             return 'img/spotify.jpeg';
         }
@@ -726,8 +743,8 @@ var two_tracks = track_one + track_two;
         }
         return localStorage.getItem('ae_token', '');
     }
-
-    ko.applyBindings(loginModel, document.getElementById('navbar-collapse-1'));
+    // ko.cleanNode(document.getElementById('navbar-collapse-1'));
+    // ko.applyBindings(loginModel, document.getElementById('navbar-collapse-1'));
 
 
     var errorBoxModel = function() {
@@ -736,7 +753,7 @@ var two_tracks = track_one + track_two;
     }
 
     var errorBoxModel = new errorBoxModel();
-    ko.applyBindings(errorBoxModel, document.getElementById('error-modal'));
+    //ko.applyBindings(errorBoxModel, document.getElementById('error-modal'));
 
 
     function login() {
