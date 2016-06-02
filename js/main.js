@@ -1,5 +1,7 @@
 // main.js
 
+var track_one;
+var track_two;
 /* global SpotifyWebApi, dndTree, $, geoplugin_countryCode, Promise, google, setRepeatArtists */
 (function () {
     'use strict';
@@ -157,7 +159,7 @@
 
     function initRootWithTrack(track) {
         console.log("hi from 158");
-        console.log(track);
+        console.log(track); // this is when it actually prints the track
         console.log(track.id);
 
         currentApi.searchTracks(
@@ -174,10 +176,17 @@
         $('#track-search').val('');
     }
 
-    function consoleLogAudioFeatures(track) {
+    function consoleLogAudioFeatures(track, one) {
         console.log("hi from 177");
         console.log(track.id);
         currentApi.getAudioFeatures(track.id).then(function (data) {
+            if (one) {
+                console.log("ONE");
+                track_one = track;
+            } else {
+                console.log("TWO");
+                track_two = track;
+            }
             console.log(data);
         });
         console.log("bye from 183");
@@ -421,58 +430,58 @@
         unavailCountryMessageSet = true;
     }
 
-    $(function () {
-        $('#artist-search')
-            // don't navigate away from the field on tab when selecting an item
-            .bind('keydown', function (event) {
-                showCompletion = true;
-                if (event.keyCode === $.ui.keyCode.TAB &&
-                    $(this).autocomplete('instance').menu.active) {
-                    event.preventDefault();
-                }
-            })
-            .autocomplete({
-                minLength: 0,
-                source: function (request, response) {
-                    currentApi.searchArtists(request.term + '*', {'limit': 50, market: userCountry}).then(function (data) {
-                        if (data.artists && data.artists.items.length) {
-                            var res = [];
-                            data.artists.items.forEach(function (artist) {
-                                res.push(artist);
-                            });
-                            if (showCompletion) {
-                                response(res);
-                            } else {
-                                response([]);
-                            }
-                        }
-                    }, function (err) {
-                        if (err.status == 400) {
-                            setUnavailCountryErrorMessage();
-                            return;
-                        }
-                    });
-                },
-                focus: function () {
-                    // prevent value inserted on focus
-                    return false;
-                },
-                select: function (event, ui) {
-                    $('#artist-search').val(ui.item.name);
-                    initRootWithArtist(ui.item);
-                    return false;
-                }
-            })
-            .autocomplete('instance')._renderItem = function (ul, item) {
-                if (!item) {
-                    console.log('no item');
-                    return;
-                }
-                return $('<li></li>')
-                    .data('item.autocomplete', item)
-                    .append(createAutoCompleteDivArtist(item))
-                    .appendTo(ul);
-            };
+    // $(function () {
+    //     $('#artist-search')
+    //         // don't navigate away from the field on tab when selecting an item
+    //         .bind('keydown', function (event) {
+    //             showCompletion = true;
+    //             if (event.keyCode === $.ui.keyCode.TAB &&
+    //                 $(this).autocomplete('instance').menu.active) {
+    //                 event.preventDefault();
+    //             }
+    //         })
+    //         .autocomplete({
+    //             minLength: 0,
+    //             source: function (request, response) {
+    //                 currentApi.searchArtists(request.term + '*', {'limit': 50, market: userCountry}).then(function (data) {
+    //                     if (data.artists && data.artists.items.length) {
+    //                         var res = [];
+    //                         data.artists.items.forEach(function (artist) {
+    //                             res.push(artist);
+    //                         });
+    //                         if (showCompletion) {
+    //                             response(res);
+    //                         } else {
+    //                             response([]);
+    //                         }
+    //                     }
+    //                 }, function (err) {
+    //                     if (err.status == 400) {
+    //                         setUnavailCountryErrorMessage();
+    //                         return;
+    //                     }
+    //                 });
+    //             },
+    //             focus: function () {
+    //                 // prevent value inserted on focus
+    //                 return false;
+    //             },
+    //             select: function (event, ui) {
+    //                 $('#artist-search').val(ui.item.name);
+    //                 initRootWithArtist(ui.item);
+    //                 return false;
+    //             }
+    //         })
+    //         .autocomplete('instance')._renderItem = function (ul, item) {
+    //             if (!item) {
+    //                 console.log('no item');
+    //                 return;
+    //             }
+    //             return $('<li></li>')
+    //                 .data('item.autocomplete', item)
+    //                 .append(createAutoCompleteDivArtist(item))
+    //                 .appendTo(ul);
+    //         };
 
         // $('#genre-search')
         //     // don't navigate away from the field on tab when selecting an item
@@ -505,7 +514,7 @@
         //             return false;
         //         }
         //     });
-
+    $(function () {
 
         $('#track-search')
             // don't navigate away from the field on tab when selecting an item
@@ -545,7 +554,63 @@
                 },
                 select: function (event, ui) {
                     $('#track-search').val(ui.item.name);
-                    consoleLogAudioFeatures(ui.item);
+                    consoleLogAudioFeatures(ui.item, true);
+                    initRootWithTrack(ui.item);
+                    //consoleLogAudioFeatures(ui.item);
+                    return false;
+                }
+            })
+            .autocomplete('instance')._renderItem = function (ul, item) {
+                if (!item) {
+                    console.log('no item');
+                    return;
+                }
+                return $('<li></li>')
+                    .data('item.autocomplete', item)
+                    .append(createAutoCompleteDivTrack(item))
+                    .appendTo(ul);
+            }
+   //     });
+
+        $('#artist-search')
+            // don't navigate away from the field on tab when selecting an item
+            .bind('keydown', function (event) {
+                showCompletion = true;
+                if (event.keyCode === $.ui.keyCode.TAB &&
+                    $(this).autocomplete('instance').menu.active) {
+                    event.preventDefault();
+                }
+            })
+            .autocomplete({
+                minLength: 0,
+                source: function (request, response) {
+                    currentApi.searchTracks(request.term + '*', {'limit': 50, market: userCountry}).then(function (data) {
+                        if (data.tracks && data.tracks.items.length) {
+                            var res = [];
+                            data.tracks.items.forEach(function (track) {
+                                //console.log(track);
+                                res.push(track);
+                            });
+                            if (showCompletion) {
+                                response(res);
+                            } else {
+                                response([]);
+                            }
+                        }
+                    }, function (err) {
+                        if (err.status == 400) {
+                            setUnavailCountryErrorMessage();
+                            return;
+                        }
+                    });
+                },
+                focus: function () {
+                    // prevent value inserted on focus
+                    return false;
+                },
+                select: function (event, ui) {
+                    $('#artist-search').val(ui.item.name);
+                    consoleLogAudioFeatures(ui.item, false);
                     initRootWithTrack(ui.item);
                     //consoleLogAudioFeatures(ui.item);
                     return false;
@@ -562,6 +627,7 @@
                     .appendTo(ul);
             }
         });
+    
 
     function drawChart(popularity) {
         var popData = google.visualization.arrayToDataTable([
