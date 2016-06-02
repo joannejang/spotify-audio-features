@@ -103,7 +103,7 @@
                Pick an audio feature to visualize using bar chart
             </label>
             <select id="bar_selection">
-              <option value="dancability">Danceability</option> 
+              <option value="danceability">Danceability</option> 
               <option value="energy">Energy</option> 
               <option value="loudness">Loudness</option>
               <option value="speechiness">Speechiness</option>
@@ -120,7 +120,7 @@
                Pick an audio feature to visualize using gauge chart
             </label>
             <select id="gauge_selection">
-              <option value="dancability">Danceability</option> 
+              <option value="danceability">Danceability</option> 
               <option value="energy">Energy</option> 
               <option value="loudness">Loudness</option>
               <option value="speechiness">Speechiness</option>
@@ -139,7 +139,7 @@
                    Pick an audio feature to visualize using radial progress chart
                 </label>
                 <select id="radial_selection">
-                  <option value="dancability">Danceability</option> 
+                  <option value="danceability">Danceability</option> 
                   <option value="energy">Energy</option> 
                   <option value="loudness">Loudness</option>
                   <option value="speechiness">Speechiness</option>
@@ -177,16 +177,16 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="./js/index.js"></script>
     <script type="text/javascript">
-      var dataset = [{dancability: 0.5, energy: 0.3}, {dancability: 0.8, energy: 0.9}]
+      var dataset = [{danceability: 0.818, energy: 0.3}, {danceability: 0.8, energy: 0.9}]
       
 
       var bar = d3.select('.bar');
       bar.selectAll("rect").data(dataset).enter().append("rect").attr("x", function(d, i) {
         return i * 41;
       }).attr("y", function(d) {
-        return 200 - d.dancability * 200;
+        return 200 - d.danceability * 200;
       }).attr("width", 40).attr("height", function(d) {
-        return d.dancability * 200;
+        return d.danceability * 200;
       })
 
 
@@ -201,7 +201,7 @@
 
         var data = google.visualization.arrayToDataTable([
           ['Label', 'Value'],
-          ['Dancability', 0.8]
+          ['Danceability', 0.8]
         ]);
 
         var options = {
@@ -306,6 +306,15 @@
       function update_radial(dataset, feature) {
         progress1.update(dataset[0][feature]);
         progress2.update(dataset[1][feature]);
+      }
+
+      function update_all(dataset) {
+        var bar_feature = d3.select('#bar_selection').property('value');
+        update_bar(dataset, bar_feature);
+        var gauge_feature =  d3.select('#gauge_selection').property('value');
+        update_gauge(dataset, gauge_feature);
+        var radial_feature =  d3.select('#radial_selection').property('value');
+        update_radial(dataset, radial_feature);
       }
 
 
