@@ -138,6 +138,8 @@ var two_tracks = track_one + track_two;
                     initRootWithTrack(data.tracks.items[0]);
                 }
             });
+                update_all(dataset);
+
         }, false);
 
         // var formGenre = document.getElementById('search-genre');
@@ -195,6 +197,7 @@ var two_tracks = track_one + track_two;
             if (data.tracks && data.tracks.items.length) {
             console.log(data.tracks.items[0]);
             initRootWithTrack(data.tracks.items[0], one ? true : false);
+
         }
     });
 
@@ -210,12 +213,12 @@ var two_tracks = track_one + track_two;
                 console.log("ONE");
                 //track_one = track;
                 for (var key in data) track_one[key]=data[key];
-               // dataset[0] = track;
+                dataset[0] = track_one;
             } else {
                 console.log("TWO");
                 for (var key in data) track_two[key] = data[key];
                 //track_two = track;
-               // dataset[1] = track;
+                dataset[1] = track_two;
             }
             console.log(data);
         });
