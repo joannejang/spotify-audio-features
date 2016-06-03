@@ -17,14 +17,14 @@ h4 {
 }
 
 
-.scaling-svg-container {
+.scaling-svg-container { /* width: 700px, padding-bottom: 100% */;
  position: relative; 
  height: 0; 
- width: 500px; 
+ width: 700px;
  padding-top: 100px;
  padding-left: 50px;
  padding-right: 150px;
- padding-bottom: 42%; 
+ padding-bottom: 520px; 
   /*override this inline for aspect ratio other than square  */
 }
 
@@ -245,10 +245,10 @@ h4 {
   float: right;
   top: 0px;
   right:0px;
-  width: 350px;
-  height: 2048px;
+  width: 400px;
+  height: 3000px;
   position: relative;
-  padding: 11px;
+  padding: 20px;
   overflow-y: scroll;
   overflow-x: hidden;
   background-color: #C1D4A9;
@@ -379,6 +379,7 @@ h4 {
   .navbar-logo {
     width: 43px;
     height: 42px;
+    padding-left: 10px;
   }
 }
 

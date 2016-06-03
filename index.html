@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/jquery-ui.min.css">
     <link rel="stylesheet" href="css/sp-bootstrap.min.css">
     <link rel="stylesheet" href="css/main.css">
+    <link href="css/tipsy.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto">
     <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
@@ -33,8 +34,9 @@
   <div id="navbarcontainer">
     <nav id="navbarup" class="navbar navbar-default navbar-static-top" role="navigation">
 
+     
       <div class="navbar-header">
-         <span class="navbar-title">Audio Features Fun</span>
+         <span class="navbar-title">Audio Features Visualizer</span>
        </div>
 
      </nav>
@@ -58,12 +60,20 @@
           <div id="track-title"></div>
             <div id="track-artist"></div>
             <div id="track-album"></div>
+            
             <br/>
-            <div id="track-audio-features"></div>
+            <div id="track-audio-features"><div id="gauge-chart" style="width: 200px; float: left"></div></div>
+            <div id="radial-progress" style="float: center; width: 200px">
+
+<!--               <div>
+                  <div id="progress1" style="width: 100px"></div>
+              </div> -->
+          </div>
+       <!--  </div> 
 
             
         </div>
-<!--               <form id="search-track" class="form-horizontal col-sm-6 col-md-6" role="form">
+             <form id="search-track" class="form-horizontal col-sm-6 col-md-6" role="form">
                 <input id="track-search" class="form-control" placeholder="Search for Track 2">
               </form> -->
               <!--<form id="search-genre" class="form-horizontal col-sm-6 col-md-6" role="form">
@@ -75,7 +85,7 @@
 
 
         </div>
-
+</div>
 
 
  <div id="tree-container"><!-- </div> -->
@@ -215,6 +225,8 @@
     <script src="js/local-api.js"></script>
     <script src="js/main.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript" src="js/jquery.tipsy.js"></script>
+
     <script src="./js/index.js"></script>
     <script type="text/javascript">
     //track ids for seed playlist: 0SJPThTy7ynySPF4euczx7, 3tW6NhWt9RgFpZxJBWYA3U, 1D066zixBwqFYqBhKgdPzp, 6OZh916QF8XNunWaP97WEZ, 6WhzFzROw3aq3rPWjgYlxr, 7axJj8BJF6UFqQIQfROvlN, 4qqArAiTPueDxIp7cf87h7, 0O45fw2L5vsWpdsOdXwNAR
@@ -373,7 +385,7 @@ function showScatterPlot(data, feature) {
     .range([height - margins.top - margins.bottom, 0]);
 
     // we add the axes SVG component. At this point, this is just a placeholder. The actual axis will be added in a bit
-    svg.append("g").attr("class", "x axis").attr("transform", "translate(0," + y.range()[0] + ")");
+    svg.append("g").attr("class", "x axis").attr("transform", "translate(0," + y.range()[0]  + ")");
     svg.append("g").attr("class", "y axis");
 
     // this is our X axis label. Nothing too special to see here.
@@ -381,14 +393,14 @@ function showScatterPlot(data, feature) {
         .attr("fill", "#414241")
         .attr("text-anchor", "end")
         .attr("x", width / 2)
-        .attr("y", height - 30)
+        .attr("y", height - 20)
         .text("Popularity");
 
     svg.append("text")
         .attr("fill", "#414241")
         .attr("text-anchor", "end")
-        .attr("x", 35)
-        .attr("y", -5)
+        .attr("x", 30)
+        .attr("y", -12)
         .text(toTitleCase(curr_feature));
 
 
@@ -431,6 +443,16 @@ function showScatterPlot(data, feature) {
             // this shouldn't be a surprising statement.
             return d.name;
     });
+
+     $('svg circle').tipsy({ 
+        gravity: 'w', 
+        html: true, 
+        title: function() {
+          var d = this.__data__;
+          var name = d.name, artist = d.artist, popularity = d.popularity;
+          return '"' + name + '" - ' + artist + '<br/>Popularity: ' + popularity;
+        }
+      });
 }
 
   function toTitleCase(str) {
@@ -457,6 +479,51 @@ function showScatterPlot(data, feature) {
             return d.name;
     });
   }
+
+
+function show_popularity_chart(d) {
+      // $('#progress1').empty();
+      var progress1 =  new RadialProgressChart('#progress1', {
+        diameter: 100,
+        max: 1,
+        round: false,
+        series: [{
+          value: dataset[dataset.length - 1].popularity,
+          color: ['red', '#7CFC00']
+        }],
+        center: function(d) {
+          return d.toFixed(2)
+        }
+      });
+}
+
+
+
+  // function draw_gauge_chart(d) {
+
+  //     google.charts.load('current', {'packages':['gauge']});
+  //     google.charts.setOnLoadCallback(drawChart);
+  //     var chart1;
+  //     function drawChart() {
+
+  //       var data1 = google.visualization.arrayToDataTable([
+  //         ['Label', 'Value'],
+  //         ['Danceability', dataset[0].danceability]
+  //       ]);
+
+
+  //       var options = {
+  //         width: 400, height: 120,
+  //         redFrom: 0.9, redTo: 1,
+  //         yellowFrom:0.75, yellowTo: 0.9,
+  //         minorTicks: 0.05,
+  //         max:1
+  //       };
+
+  //       chart1 = new google.visualization.Gauge(document.getElementById('chart_div1'));
+
+  //       chart1.draw(data1, options);
+  // }
 
 
 
@@ -606,20 +673,20 @@ function showScatterPlot(data, feature) {
       //   update_radial(dataset, feature);
       // });
 
-      function update_radial(dataset, feature) {
-        progress1.update(dataset[0][feature]);
-        progress2.update(dataset[1][feature]);
-      }
+      // function update_radial(dataset, feature) {
+      //   progress1.update(dataset[0][feature]);
+      //   progress2.update(dataset[1][feature]);
+      // }
 
-      function update_all(dataset) {
-        console.log("called");
-        var bar_feature = d3.select('#bar_selection').property('value');
-        update_bar(dataset, bar_feature);
-        var gauge_feature =  d3.select('#gauge_selection').property('value');
-        update_gauge(dataset, gauge_feature);
-        var radial_feature =  d3.select('#radial_selection').property('value');
-        update_radial(dataset, radial_feature);
-      }
+      // function update_all(dataset) {
+      //   console.log("called");
+      //   var bar_feature = d3.select('#bar_selection').property('value');
+      //   update_bar(dataset, bar_feature);
+      //   var gauge_feature =  d3.select('#gauge_selection').property('value');
+      //   update_gauge(dataset, gauge_feature);
+      //   var radial_feature =  d3.select('#radial_selection').property('value');
+      //   update_radial(dataset, radial_feature);
+      // }
 
       // function authorizeUser() {
       //   var scopes = 'playlist-read-private playlist-modify-private playlist-modify-public';
