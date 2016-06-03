@@ -39,66 +39,101 @@
 
      </nav>
     <!-- search -->
-            <div id="search" class="row">
-              <form id="search-artist" class="form-horizontal col-sm-6 col-md-6" role="form">
-                <input id="artist-search" class="form-control" placeholder="Search for Track 1">
+
+
+  </div>
+          <div id="rightpane" style="height: 2000px">
+                <div id="search"> <!-- class="row"-->
+                  Add a track:
+              <form id="search-artist" role="form"> <!-- class="form-horizontal col-sm-6 col-md-6"  -->
+                <input id="artist-search" class="form-control" placeholder="Search">
               </form>
-              <form id="search-track" class="form-horizontal col-sm-6 col-md-6" role="form">
+                      <div id="tracks">
+          <div id="track-one">TRACK ONE TEST</div>
+          <!-- <div id="track-two">TRACK TWO TEST</div> -->
+        </div>
+
+
+             <div id="track-metadata">
+          <ul>
+            <li id="track-title">Title: 
+            </li><br/>
+             <li id="track-artist">Artist: 
+            </li><br/>
+            <li id="track-album">Album: 
+            </li><br/>
+            
+        </div>
+<!--               <form id="search-track" class="form-horizontal col-sm-6 col-md-6" role="form">
                 <input id="track-search" class="form-control" placeholder="Search for Track 2">
-              </form>
+              </form> -->
               <!--<form id="search-genre" class="form-horizontal col-sm-6 col-md-6" role="form">
                 <input id="genre-search" class="form-control" placeholder="Search for a Genre">
               </form>-->
-            </div>
+            </div>    
 
-  </div>
-        
 
-        <div id="rightpane" style="height: 2000px">
-          Hover over an audio feature to learn more.
+
+
+        </div>
+
+
+
+ <div id="tree-container"><!-- </div> -->
+
+
+<!--           <div style="display: block">TESTING DISPLAY BLOCK</div> -->
+      <div class="scaling-svg-container">
+        <div id="scatter-load" style="overflow: visible"></div>
+       <!--  <svg class="chart" style="overflow: visible"></svg> -->
+<!--           <svg class="chart" viewBox="500 500 500 500" preserveAspectRatio="xMidYMin meet"
+   style="width: 70%; padding-top: 150px; padding-bottom: 45%; height: 1px; overflow: visible"></svg> -->
+      </div>
+
+      <div id="scatter-selector">
+        <label style="display: inline-block; width: 200px; text-align: left; float: center"> Pick an audio feature to visualize: </label>
+        <select id="scatter_selection">
+              <option value="danceability">Danceability</option> 
+              <option value="energy">Energy</option>
+              <option value="valence">Valence</option>
+              <option value="tempo">Tempo</option>
+            </select>
+          </div>
+    <div id="feature-explanation">
+          Hover over an audio feature to learn more:
           <ul>
             <li class="tooltip">Danceability
               <span class="tooltiptext">Danceability describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity. A value of 0.0 is least danceable and 1.0 is most danceable.</span>
-            </li><br/>
+            </li> | 
             <li class="tooltip">Energy
               <span class="tooltiptext">Energy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy. For example, death metal has high energy, while a Bach prelude scores low on the scale. Perceptual features contributing to this attribute include dynamic range, perceived loudness, timbre, onset rate, and general entropy.</span>
-            </li><br/>
+            </li> | 
             <li class="tooltip">Loudness
               <span class="tooltiptext">The overall loudness of a track in decibels (dB). Loudness values are averaged across the entire track and are useful for comparing relative loudness of tracks. Loudness is the quality of a sound that is the primary psychological correlate of physical strength (amplitude). Values typical range between -60 and 0 db.</span>
-            </li><br/>
+            </li> | 
             <li class="tooltip">Speechiness
               <span class="tooltiptext">Speechiness detects the presence of spoken words in a track. The more exclusively speech-like the recording (e.g. talk show, audio book, poetry), the closer to 1.0 the attribute value. Values above 0.66 describe tracks that are probably made entirely of spoken words. Values between 0.33 and 0.66 describe tracks that may contain both music and speech, either in sections or layered, including such cases as rap music. Values below 0.33 most likely represent music and other non-speech-like tracks.</span>
-            </li><br/>
+            </li> | 
             <li class="tooltip">Acousticness
               <span class="tooltiptext">A confidence measure from 0.0 to 1.0 of whether the track is acoustic. 1.0 represents high confidence the track is acoustic.</span>
-            </li><br/>
+            </li> | 
             <li class="tooltip">Instrumentalness
               <span class="tooltiptext">  Predicts whether a track contains no vocals. "Ooh" and "aah" sounds are treated as instrumental in this context. Rap or spoken word tracks are clearly "vocal". The closer the instrumentalness value is to 1.0, the greater likelihood the track contains no vocal content. Values above 0.5 are intended to represent instrumental tracks, but confidence is higher as the value approaches 1.0.</span>
-            </li><br/>
+            </li> | 
             <li class="tooltip">Liveness
               <span class="tooltiptext">Detects the presence of an audience in the recording. Higher liveness values represent an increased probability that the track was performed live. A value above 0.8 provides strong likelihood that the track is live.</span>
-            </li><br/>
+            </li> | 
             <li class="tooltip">Valence
               <span class="tooltiptext">A measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track. Tracks with high valence sound more positive (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed, angry).</span>
-            </li><br/>
+            </li> | 
             <li class="tooltip">Tempo
               <span class="tooltiptext">The overall estimated tempo of a track in beats per minute (BPM). In musical terminology, tempo is the speed or pace of a given piece and derives directly from the average beat duration.</span>
             </li><br/>
           </ul>
         </div>
 
-
-
-        <div id="tree-container"><!-- </div> -->
-
-        <div id="tracks">
-          <div id="track-one">TRACK ONE TEST</div>
-          <div id="track-two">TRACK TWO TEST</div>
-        </div>
-          <div style="display: block">TESTING DISPLAY BLOCK</div>
-
-
-
+</div>
+<!-- 
           <div id="bar-chart" style="width: 200px; float: left">
             <label style="display: inline-block; width: 200px; text-align: left">
                Pick an audio feature to visualize using bar chart
@@ -134,13 +169,13 @@
               <div id="chart_div1" style="width: 200px; height: 120px; float: left"></div>
             <div id="chart_div2" style="width: 200px; height: 120px; float: left"></div>
           </div>
-     <!--  </div> -->
+    </div>
 
-<!--           <div class="main-container"> -->
-          <div id="radial-progress" style="float: left; width: 200px">
+          <div class="main-container"> -->
+       <!--    <div id="radial-progress" style="float: left; width: 200px">
 
-        <!--   <div class="container"> -->
-              <div>
+          <div class="container"> -->
+              <!-- <div>
                 <label style="display: inline-block; width: 200px; text-align: left">
                    Pick an audio feature to visualize using radial progress chart
                 </label>
@@ -158,10 +193,9 @@
               </div>
               <div id="progress1" style="width: 100px"></div>
               <div id="progress2" style="width: 100px"></div>
-          <!-- </div> -->
-        </div>
-        </div>
-
+          </div> -->
+       <!--  </div> 
+    </div> --> 
 
 
 
@@ -184,83 +218,213 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="./js/index.js"></script>
     <script type="text/javascript">
-      var dataset = [{danceability: 0.818, energy: 0.732, acousticness:0.0335, instrumentalness:0.0000495, liveness:0.19,
-        loudness:4.474, speechiness:0.0334, tempo:119.002, valence:0.664}, {danceability: 0.685, energy: 0.466, acousticness:0.0335, instrumentalness:0.00000206, liveness:0.0915,
-        loudness:9.074, speechiness:0.0304, tempo:
-79.936, valence:0.37}]
+//       var dataset = [{danceability: 0.818, energy: 0.732, acousticness:0.0335, instrumentalness:0.0000495, liveness:0.19,
+//         loudness:4.474, speechiness:0.0334, tempo:119.002, valence:0.664}, {danceability: 0.685, energy: 0.466, acousticness:0.0335, instrumentalness:0.00000206, liveness:0.0915,
+//         loudness:9.074, speechiness:0.0304, tempo:
+// 79.936, valence:0.37}]
+var dataset = [{trackId: 1, danceability: 0.818, popularity: 90}, {trackId: 2, danceability: 0.575, popularity: 70}, {trackId: 3, danceability: 0.260, popularity: 80}]
+// var dataset = d3.json("init_playlist.json", function(data) {
+//   dataset = data;
+// });
 
-      var bar = d3.select('.bar');
-      bar.selectAll("rect").data(dataset).enter().append("rect").attr("x", function(d, i) {
-        return i * 41;
-      }).attr("y", function(d) {
-        return 200 - d.danceability * 200;
-      }).attr("width", 40).attr("height", function(d) {
-        return d.danceability * 200;
-      })
 
-      google.charts.load('current', {'packages':['gauge']});
-      google.charts.setOnLoadCallback(drawChart);
-      var chart1;
-      var chart2;
-      function drawChart() {
 
-        var data1 = google.visualization.arrayToDataTable([
-          ['Label', 'Value'],
-          ['Danceability', dataset[0].danceability]
-        ]);
 
-        var data2 = google.visualization.arrayToDataTable([
-          ['Label', 'Value'],
-          ['Danceability', dataset[1].danceability]
-        ]);
 
-        var options = {
-          width: 400, height: 120,
-          redFrom: 0.9, redTo: 1,
-          yellowFrom:0.75, yellowTo: 0.9,
-          minorTicks: 0.05,
-          max:1
-        };
+// call the method below
+showScatterPlot(dataset);
 
-        chart1 = new google.visualization.Gauge(document.getElementById('chart_div1'));
+function showScatterPlot(data) {
+    // just to have some space around items. 
+    var margins = {
+        "left": 40,
+            "right": 30,
+            "top": 30,
+            "bottom": 30
+    };
+    
+    var width = 500;
+    var height = 500;
+    
+    // this will be our colour scale. An Ordinal scale.
+    var colors = d3.scale.category10();
 
-        chart1.draw(data1, options);
+    // we add the SVG component to the scatter-load div
+    var svg = d3.select("#scatter-load").append("svg").attr("style", "overflow: visible").attr("width", width).attr("height", height).append("g")
+        .attr("transform", "translate(" + margins.left + "," + margins.top + ")");
 
-        chart2 = new google.visualization.Gauge(document.getElementById('chart_div2'));
+    // this sets the scale that we're using for the X axis. 
+    // the domain define the min and max variables to show. In this case, it's the min and max prices of items.
+    // this is made a compact piece of code due to d3.extent which gives back the max and min of the price variable within the dataset
+    var x = d3.scale.linear()
+        .domain(d3.extent(data, function (d) {
+        return d.popularity;
+    }))
+    // the range maps the domain to values from 0 to the width minus the left and right margins (used to space out the visualization)
+        .range([0, width - margins.left - margins.right]);
 
-        chart2.draw(data2, options);
-      }
+    // this does the same as for the y axis but maps from the rating variable to the height to 0. 
+    var y = d3.scale.linear()
+        .domain(d3.extent(data, function (d) {
+        return d.danceability;
+    }))
+    // Note that height goes first due to the weird SVG coordinate system
+    .range([height - margins.top - margins.bottom, 0]);
 
-      var progress1 =  new RadialProgressChart('#progress1', {
-        diameter: 100,
-        max: 1,
-        round: false,
-        series: [{
-          value: dataset[0].danceability,
-          color: ['red', '#7CFC00']
-        }],
-        center: function(d) {
-          return d.toFixed(2)
-        }
-      });
+    // we add the axes SVG component. At this point, this is just a placeholder. The actual axis will be added in a bit
+    svg.append("g").attr("class", "x axis").attr("transform", "translate(0," + y.range()[0] + ")");
+    svg.append("g").attr("class", "y axis");
 
-      var progress2 =  new RadialProgressChart('#progress2', {
-        diameter: 100,
-        max: 1,
-        round: false,
-        series: [{
-          value: dataset[1].danceability,
-          color: ['red', '#7CFC00']
-        }],
-        center: function(d) {
-          return d.toFixed(2)
-        }
-      });
+    // this is our X axis label. Nothing too special to see here.
+    svg.append("text")
+        .attr("fill", "#414241")
+        .attr("text-anchor", "end")
+        .attr("x", width / 2)
+        .attr("y", height - 30)
+        .text("Popularity");
 
-      d3.select('#bar_selection').on('change', function() {
-        feature = d3.select(this).property('value');
-        update_bar(dataset, feature);
-      });
+    svg.append("text")
+        .attr("fill", "#414241")
+        .attr("text-anchor", "end")
+        .attr("x", 35)
+        .attr("y", -5)
+        .text("Danceability");
+
+
+    // this is the actual definition of our x and y axes. The orientation refers to where the labels appear - for the x axis, below or above the line, and for the y axis, left or right of the line. Tick padding refers to how much space between the tick and the label. There are other parameters too - see https://github.com/mbostock/d3/wiki/SVG-Axes for more information
+    var xAxis = d3.svg.axis().scale(x).orient("bottom").tickPadding(2);
+    var yAxis = d3.svg.axis().scale(y).orient("left").tickPadding(2);
+
+    // this is where we select the axis we created a few lines earlier. See how we select the axis item. in our svg we appended a g element with a x/y and axis class. To pull that back up, we do this svg select, then 'call' the appropriate axis object for rendering.    
+    svg.selectAll("g.y.axis").call(yAxis);
+    svg.selectAll("g.x.axis").call(xAxis);
+
+    // now, we can get down to the data part, and drawing stuff. We are telling D3 that all nodes (g elements with class node) will have data attached to them. The 'key' we use (to let D3 know the uniqueness of items) will be the name. Not usually a great key, but fine for this example.
+    var chocolate = svg.selectAll("g.node").data(data, function (d) {
+        return d.trackId;
+    });
+
+    // we 'enter' the data, making the SVG group (to contain a circle and text) with a class node. This corresponds with what we told the data it should be above.
+    
+    var chocolateGroup = chocolate.enter().append("g").attr("class", "node")
+    // this is how we set the position of the items. Translate is an incredibly useful function for rotating and positioning items 
+    .attr('transform', function (d) {
+        return "translate(" + x(d.popularity) + "," + y(d.danceability) + ")";
+    });
+
+    // we add our first graphics element! A circle! 
+    chocolateGroup.append("circle")
+        .attr("r", 5)
+        .attr("class", "dot")
+        .style("fill", function (d) {
+            // remember the ordinal scales? We use the colors scale to get a colour for our manufacturer. Now each node will be coloured
+            // by who makes the chocolate. 
+            return colors(d.trackId);
+    });
+
+    // now we add some text, so we can see what each item is.
+    chocolateGroup.append("text")
+        .style("text-anchor", "middle")
+        .attr("dy", -10)
+        .text(function (d) {
+            // this shouldn't be a surprising statement.
+            return d.trackId;
+    });
+}
+
+  function update_scatter(track) { //, feature) {
+    var scatter = d3.select("#scatter-load");
+    scatter.append("circle")
+    .attr("r", 5)
+    .attr("class", "dot")
+    .style("fill", function (d) {
+      return colors(d.trackId);
+    });
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+      // var bar = d3.select('.bar');
+      // bar.selectAll("rect").data(dataset).enter().append("rect").attr("x", function(d, i) {
+      //   return i * 41;
+      // }).attr("y", function(d) {
+      //   return 200 - d.danceability * 200;
+      // }).attr("width", 40).attr("height", function(d) {
+      //   return d.danceability * 200;
+      // })
+
+      // google.charts.load('current', {'packages':['gauge']});
+      // google.charts.setOnLoadCallback(drawChart);
+      // var chart1;
+      // var chart2;
+      // function drawChart() {
+
+      //   var data1 = google.visualization.arrayToDataTable([
+      //     ['Label', 'Value'],
+      //     ['Danceability', dataset[0].danceability]
+      //   ]);
+
+      //   var data2 = google.visualization.arrayToDataTable([
+      //     ['Label', 'Value'],
+      //     ['Danceability', dataset[1].danceability]
+      //   ]);
+
+      //   var options = {
+      //     width: 400, height: 120,
+      //     redFrom: 0.9, redTo: 1,
+      //     yellowFrom:0.75, yellowTo: 0.9,
+      //     minorTicks: 0.05,
+      //     max:1
+      //   };
+
+      //   chart1 = new google.visualization.Gauge(document.getElementById('chart_div1'));
+
+      //   chart1.draw(data1, options);
+
+      //   chart2 = new google.visualization.Gauge(document.getElementById('chart_div2'));
+
+      //   chart2.draw(data2, options);
+      // }
+
+      // var progress1 =  new RadialProgressChart('#progress1', {
+      //   diameter: 100,
+      //   max: 1,
+      //   round: false,
+      //   series: [{
+      //     value: dataset[0].danceability,
+      //     color: ['red', '#7CFC00']
+      //   }],
+      //   center: function(d) {
+      //     return d.toFixed(2)
+      //   }
+      // });
+
+      // var progress2 =  new RadialProgressChart('#progress2', {
+      //   diameter: 100,
+      //   max: 1,
+      //   round: false,
+      //   series: [{
+      //     value: dataset[1].danceability,
+      //     color: ['red', '#7CFC00']
+      //   }],
+      //   center: function(d) {
+      //     return d.toFixed(2)
+      //   }
+      // });
+
+      // d3.select('#bar_selection').on('change', function() {
+      //   feature = d3.select(this).property('value');
+      //   update_bar(dataset, feature);
+      // });
 
       function update_bar(dataset, feature) {
         var bar = d3.select('.bar');
@@ -285,40 +449,40 @@
         bar.selectAll("rect").data(filtered_dataset).exit().remove();
       }
 
-      d3.select('#gauge_selection').on('change', function() {
-        feature = d3.select(this).property('value');
-        update_gauge(dataset, feature);
-      });
+      // d3.select('#gauge_selection').on('change', function() {
+      //   feature = d3.select(this).property('value');
+      //   update_gauge(dataset, feature);
+      // });
 
-      function update_gauge(dataset, feature) {
-        var data1 = google.visualization.arrayToDataTable([
-          ['Label', 'Value'],
-          [feature, dataset[0][feature]]
-        ]);
+      // function update_gauge(dataset, feature) {
+      //   var data1 = google.visualization.arrayToDataTable([
+      //     ['Label', 'Value'],
+      //     [feature, dataset[0][feature]]
+      //   ]);
 
-        var data2 = google.visualization.arrayToDataTable([
-          ['Label', 'Value'],
-          [feature, dataset[1][feature]]
-        ]);
+      //   var data2 = google.visualization.arrayToDataTable([
+      //     ['Label', 'Value'],
+      //     [feature, dataset[1][feature]]
+      //   ]);
 
-        var options = {
-          width: 400, height: 120,
-          redFrom: 0.9, redTo: 1,
-          yellowFrom:0.75, yellowTo: 0.9,
-          minorTicks: 0.05,
-          max:1
-        };
+      //   var options = {
+      //     width: 400, height: 120,
+      //     redFrom: 0.9, redTo: 1,
+      //     yellowFrom:0.75, yellowTo: 0.9,
+      //     minorTicks: 0.05,
+      //     max:1
+      //   };
 
 
-        chart1.draw(data1, options);
+      //   chart1.draw(data1, options);
 
-        chart2.draw(data2, options);
-      }
+      //   chart2.draw(data2, options);
+      // }
 
-      d3.select('#radial_selection').on('change', function() {
-        feature = d3.select(this).property('value');
-        update_radial(dataset, feature);
-      });
+      // d3.select('#radial_selection').on('change', function() {
+      //   feature = d3.select(this).property('value');
+      //   update_radial(dataset, feature);
+      // });
 
       function update_radial(dataset, feature) {
         progress1.update(dataset[0][feature]);
@@ -334,6 +498,50 @@
         var radial_feature =  d3.select('#radial_selection').property('value');
         update_radial(dataset, radial_feature);
       }
+
+      // function authorizeUser() {
+      //   var scopes = 'playlist-read-private playlist-modify-private playlist-modify-public';
+      //   var url = 'https://accounts.spotify.com/authorize?client_id=' + SPOTIFY_CLIENT_ID +
+      //       '&response_type=token' +
+      //       '&scope=' + encodeURIComponent(scopes) +
+      //       '&redirect_uri=' + encodeURIComponent(SPOTIFY_REDIRECT_URI);
+      //   document.location = url;
+      // }
+
+    //   $(document).ready(
+    // function() {
+    //    // songTable = initTable();
+    //     var args = parseArgs();
+    //     if ('error' in args) {
+    //         error("Sorry, I can't read your playlists from Spotify without authorization");
+    //         $("#go").show();
+    //         $("#go").on('click', function() {
+    //             authorizeUser();
+    //         });
+    //     } else if ('access_token' in args) {
+    //         accessToken = args['access_token'];
+    //         $(".worker").hide();
+    //         fetchCurrentUserProfile(function(user) {
+    //             if (user) {
+    //                 curUserID = user.id;
+    //                 $("#who").text(user.id);
+    //                 loadPlaylists(user.id);
+    //             } else {
+    //                 error("Trouble getting the user profile");
+    //             }
+    //         });
+    //     } else {
+    //         $("#go").show();
+    //         $("#go").on('click', function() {
+    //             authorizeUser();
+    //         });
+    //       }
+    //     }
+    //       );
+        
+
+
+
 
 
 

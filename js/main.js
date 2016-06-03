@@ -60,6 +60,7 @@ var two_tracks = track_one + track_two;
                 console.log("init track one id");
                 console.log(data);
                 track_one = data;
+                document.getElementById('track-one').innerHTML =data;
             });
         }
 
@@ -70,11 +71,8 @@ var two_tracks = track_one + track_two;
                 track_two = data;
             });
         }
-        console.log(track_one + track_two);
-        if (two_tracks) {
-            console.log("two tracks:");
-            console.log(two_tracks);
-        }
+        two_tracks[0] = track_one;
+        two_tracks[1] = track_two;
 
         // if (initEntry) {
         //     $.ajax({
@@ -235,7 +233,10 @@ var two_tracks = track_one + track_two;
     function update_track(dataset, one) {
         if (one) {
             var value = '<div style="width: 400px; height: 400px;"><img src="' + getSuitableImage(dataset[0].album.images) + '"/></div>';
-            document.getElementById('track-one').innerHTML = value;            
+            document.getElementById('track-one').innerHTML = value;   
+            document.getElementById('track-title').innerHTML = 'Title: ' + dataset[0].name;
+            document.getElementById('track-artist').innerHTML = 'Artist: ' + dataset[0].artists[0].name;         
+            document.getElementById('track-album').innerHTML = 'Album: ' + dataset[0].album.name;
         } else {
             var value = '<div style="width: 400px; height: 400px;"><img src="' + getSuitableImage(dataset[1].album.images) + '"/></div>';
             document.getElementById('track-two').innerHTML = value;            
@@ -700,7 +701,7 @@ var two_tracks = track_one + track_two;
     }
 
     function getSuitableImage(images) {
-        var minSize = 200; //64;
+        var minSize = 100; //64;
         if (images.length === 0) {
             return 'img/spotify.jpeg';
         }

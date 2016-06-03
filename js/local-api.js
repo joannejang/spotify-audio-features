@@ -1,4 +1,5 @@
-var OAuthToken = "BQASpQDqTK-y9s3GvMg-wrmHt32nDdsJedwVi9cwWqwYHFC2wUYTQ-DG5Ad0PWxTd7pCqQdXwtqB5Rch_18p_nWYTva4Yd5qZR2SwMB2iQwvi1R5H882IOR7Xr1ESBslc0vknvAzvo4SgRA";
+//var OAuthToken = "BQAf2W0sc0djA1iREvdJFrV-MvkSCEWYuA4l3OK76mG2HcVHWXiRkfDp-p6pByn9VWx94Ma9vt9CDOGsYm3GnWe_BtmTzAFSOOivleUNJln4YIl36Oi69--qRl187aUG83k_0G6UtC05BR716kMa9zQ";
+var accessToken = "BQA24yPtIcPYsVFTv_wFZKySBvsUawSLSVRvRbSVpsYcjY-buDITfj5YS2Ah4ML94chAF-vwoeo3OdkAiDT0mN9RTFRljI2zibo1MQJlGZkZE7G5b9RnH_r7v5cb1DEcL0V4ZdqyLyCCV3s284X2Zsc";
 var localProxyApi = function (serverBasePath) {
 
   var getArtistRelatedArtists = function(artistId) {
@@ -68,7 +69,7 @@ var localProxyApi = function (serverBasePath) {
     var url = serverBasePath + '/v1/audio-features/' + trackId;
     return $.ajax({
       headers: {
-       'Authorization': 'Bearer ' + OAuthToken
+       'Authorization': 'Bearer ' + accessToken//OAuthToken
       },
       url: url
     })
