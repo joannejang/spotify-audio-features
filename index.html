@@ -49,19 +49,16 @@
                 <input id="artist-search" class="form-control" placeholder="Search">
               </form>
                       <div id="tracks">
-          <div id="track-one">TRACK ONE TEST</div>
+          <div id="track-one"></div>
           <!-- <div id="track-two">TRACK TWO TEST</div> -->
         </div>
 
 
              <div id="track-metadata">
-          <ul>
-            <li id="track-title">Title: 
-            </li><br/>
-             <li id="track-artist">Artist: 
-            </li><br/>
-            <li id="track-album">Album: 
-            </li><br/>
+          <div id="track-title"></div>
+            <div id="track-artist"></div>
+            <div id="track-album"></div>
+
             
         </div>
 <!--               <form id="search-track" class="form-horizontal col-sm-6 col-md-6" role="form">
@@ -218,11 +215,103 @@
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="./js/index.js"></script>
     <script type="text/javascript">
+    //track ids for seed playlist: 0SJPThTy7ynySPF4euczx7, 3tW6NhWt9RgFpZxJBWYA3U, 1D066zixBwqFYqBhKgdPzp, 6OZh916QF8XNunWaP97WEZ, 6WhzFzROw3aq3rPWjgYlxr, 7axJj8BJF6UFqQIQfROvlN, 4qqArAiTPueDxIp7cf87h7, 0O45fw2L5vsWpdsOdXwNAR
+
 //       var dataset = [{danceability: 0.818, energy: 0.732, acousticness:0.0335, instrumentalness:0.0000495, liveness:0.19,
 //         loudness:4.474, speechiness:0.0334, tempo:119.002, valence:0.664}, {danceability: 0.685, energy: 0.466, acousticness:0.0335, instrumentalness:0.00000206, liveness:0.0915,
 //         loudness:9.074, speechiness:0.0304, tempo:
 // 79.936, valence:0.37}]
-var dataset = [{trackId: 1, danceability: 0.818, popularity: 90}, {trackId: 2, danceability: 0.575, popularity: 70}, {trackId: 3, danceability: 0.260, popularity: 80}]
+// var dataset = [{trackId: 1, danceability: 0.818, popularity: 90}, {trackId: 2, danceability: 0.575, popularity: 70}, {trackId: 3, danceability: 0.260, popularity: 80}]
+var dataset = [ {
+      "id" : "0SJPThTy7ynySPF4euczx7",
+      "name" : "Work from Home",
+      "artist": "Fifth Harmony",
+      "popularity" : 100,
+      "preview_url" : "https://p.scdn.co/mp3-preview/351a86db5a906274e7b09dbfec8170e159f8e665",
+       "danceability" : 0.803,
+      "energy" : 0.631,
+      "valence" : 0.659,
+      "tempo" : 104.999
+    },
+  {
+      "id" : "3tW6NhWt9RgFpZxJBWYA3U",
+      "name" : "Say It",
+      "artist": "Flume",
+      "popularity" : 77,
+      "preview_url" : "https://p.scdn.co/mp3-preview/e5e45bd32405178692f8d1f5cf159413dc1a67cc",
+      "danceability" : 0.599,
+    "energy" : 0.533,
+    "valence" : 0.262,
+    "tempo" : 75.373
+    },
+    {
+      "id" : "1D066zixBwqFYqBhKgdPzp",
+      "name" : "Fergalicious",
+      "artist": "Fergie",
+      "popularity" : 66,
+      "preview_url" : "https://p.scdn.co/mp3-preview/5d742169f69149e20909a454b3999f3a9428408d",
+      "danceability" : 0.904,
+    "energy" : 0.598,
+     "valence" : 0.791,
+    "tempo" : 129.055
+    },
+    {
+      "id" : "6OZh916QF8XNunWaP97WEZ",
+      "name" : "Fast Car - Radio Edit",
+      "artist": "Jonas Blue",
+      "popularity" : 94,
+      "preview_url" : "https://p.scdn.co/mp3-preview/750c4e854bbb8d1e11e7eea04047f6a9e9a0730f",
+      "danceability" : 0.459,
+    "energy" : 0.587,
+    "valence" : 0.564,
+    "tempo" : 113.901
+    },
+    {
+      "id" : "6WhzFzROw3aq3rPWjgYlxr",
+      "name" : "Gold",
+      "artist": "Kiiara",
+      "popularity" : 83,
+      "preview_url" : "https://p.scdn.co/mp3-preview/c11c15826334b09f98922620970d6c65e44078b8",
+      "danceability" : 0.600,
+    "energy" : 0.412,
+    "valence" : 0.409,
+    "tempo" : 113.049
+    },
+  {
+      "id" : "7axJj8BJF6UFqQIQfROvlN",
+      "name" : "So F**kin' Romantic - Tim Gunter Remix",
+      "artist": "Matthew Koma",
+      "popularity" : 50,
+      "preview_url" : "https://p.scdn.co/mp3-preview/b194b130ce44c1182a5f319e4b26de7a293204a3",
+    "danceability" : 0.669,
+    "energy" : 0.798,
+ "valence" : 0.477,
+    "tempo" : 139.938
+    },
+    {
+      "id" : "4qqArAiTPueDxIp7cf87h7",
+      "name" : "Final Song",
+      "artist": "MØ",
+      "popularity" : 82,
+      "preview_url" : "https://p.scdn.co/mp3-preview/774e3492a054d715042d4efe622e891eb10764a5",
+       "danceability" : 0.695,
+    "energy" : 0.672,
+    "valence" : 0.272,
+    "tempo" : 104.988
+    },
+    {
+      "id" : "0O45fw2L5vsWpdsOdXwNAR",
+      "name" : "SexyBack",
+      "artist": "Justin Timberlake",
+      "popularity" : 76,
+      "preview_url" : "https://p.scdn.co/mp3-preview/e4ff7d627759f7c67e5814ddd821ba6b507136da",
+      "danceability" : 0.967,
+    "energy" : 0.583,
+    "valence" : 0.965,
+    "tempo" : 117.000
+    }
+
+];
 // var dataset = d3.json("init_playlist.json", function(data) {
 //   dataset = data;
 // });
@@ -301,7 +390,7 @@ function showScatterPlot(data) {
 
     // now, we can get down to the data part, and drawing stuff. We are telling D3 that all nodes (g elements with class node) will have data attached to them. The 'key' we use (to let D3 know the uniqueness of items) will be the name. Not usually a great key, but fine for this example.
     var chocolate = svg.selectAll("g.node").data(data, function (d) {
-        return d.trackId;
+        return d.name;
     });
 
     // we 'enter' the data, making the SVG group (to contain a circle and text) with a class node. This corresponds with what we told the data it should be above.
@@ -319,7 +408,7 @@ function showScatterPlot(data) {
         .style("fill", function (d) {
             // remember the ordinal scales? We use the colors scale to get a colour for our manufacturer. Now each node will be coloured
             // by who makes the chocolate. 
-            return colors(d.trackId);
+            return colors(d.name);
     });
 
     // now we add some text, so we can see what each item is.
@@ -328,20 +417,30 @@ function showScatterPlot(data) {
         .attr("dy", -10)
         .text(function (d) {
             // this shouldn't be a surprising statement.
-            return d.trackId;
+            return d.name;
     });
 }
 
-  function update_scatter(track) { //, feature) {
+  function update_scatter(d) { //, feature) {
+  console.log("logging from index 428");
+  console.log(d);
+    var colors = d3.scale.category10();
     var scatter = d3.select("#scatter-load");
     scatter.append("circle")
     .attr("r", 5)
     .attr("class", "dot")
     .style("fill", function (d) {
-      return colors(d.trackId);
+      return colors(d.name);
+    });
+
+    scatter.append("text")
+        .style("text-anchor", "middle")
+        .attr("dy", -10)
+        .text(function (d) {
+            // this shouldn't be a surprising statement.
+            return d.name;
     });
   }
-
 
 
 

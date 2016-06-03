@@ -60,7 +60,6 @@ var two_tracks = track_one + track_two;
                 console.log("init track one id");
                 console.log(data);
                 track_one = data;
-                document.getElementById('track-one').innerHTML =data;
             });
         }
 
@@ -71,8 +70,6 @@ var two_tracks = track_one + track_two;
                 track_two = data;
             });
         }
-        two_tracks[0] = track_one;
-        two_tracks[1] = track_two;
 
         // if (initEntry) {
         //     $.ajax({
@@ -121,24 +118,24 @@ var two_tracks = track_one + track_two;
 
         }, false);
 
-        var formTrack = document.getElementById('search-track');
-        formTrack.addEventListener('submit', function (e) {
-            showCompletion = false;
-            e.preventDefault();
-            var search = document.getElementById('track-search');
-            currentApi.searchTracks(
-                search.value.trim(),
-                userCountry
-                ).then(function (data) {
-                if (data.tracks && data.tracks.items.length) {
-                    console.log(data.tracks.items[0]);
-                    consoleLogAudioFeatures(ui.item);
-                    initRootWithTrack(data.tracks.items[0]);
-                }
-            });
-               // update_all(dataset);
+        // var formTrack = document.getElementById('search-track');
+        // formTrack.addEventListener('submit', function (e) {
+        //     showCompletion = false;
+        //     e.preventDefault();
+        //     var search = document.getElementById('track-search');
+        //     currentApi.searchTracks(
+        //         search.value.trim(),
+        //         userCountry
+        //         ).then(function (data) {
+        //         if (data.tracks && data.tracks.items.length) {
+        //             console.log(data.tracks.items[0]);
+        //             consoleLogAudioFeatures(ui.item);
+        //             initRootWithTrack(data.tracks.items[0]);
+        //         }
+        //     });
+        //        // update_all(dataset);
 
-        }, false);
+        // }, false);
 
         // var formGenre = document.getElementById('search-genre');
         // formGenre.addEventListener('submit', function (e) {
@@ -213,7 +210,14 @@ var two_tracks = track_one + track_two;
                 for (var key in data) track_one[key]=data[key];
                 dataset[0] = track_one;
                 console.log("AFTER UPDATING DATASET's one: ");
+                console.log(dataset.length);
                 console.log(dataset);
+                var object_to_add = {"name": track.name, "popularity": track.popularity, "preview_url": track.preview_url, "artist": track.artists[0], "danceability": data["danceability"], "valence": data["valence"], "tempo": data["tempo"], "energy": data["energy"]};
+                console.log(object_to_add);
+                dataset[dataset.length] = object_to_add;
+                d3.select("svg").remove();
+                showScatterPlot(dataset);
+                //update_scatter(object_to_add);
                 update_track(dataset, true);
             } else {
                 console.log("TWO");
@@ -223,8 +227,9 @@ var two_tracks = track_one + track_two;
                 console.log("AFTER UPDATING DATASET's two: ");
                 console.log(dataset);
                 update_track(dataset, false);
+
             }
-            update_all(dataset);
+            //update_all(dataset);
         });
         console.log("bye from 183");
 
