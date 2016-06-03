@@ -58,6 +58,8 @@
           <div id="track-title"></div>
             <div id="track-artist"></div>
             <div id="track-album"></div>
+            <br/>
+            <div id="track-audio-features"></div>
 
             
         </div>
@@ -277,17 +279,6 @@ var dataset = [ {
     "valence" : 0.409,
     "tempo" : 113.049
     },
-  {
-      "id" : "7axJj8BJF6UFqQIQfROvlN",
-      "name" : "So F**kin' Romantic - Tim Gunter Remix",
-      "artist": "Matthew Koma",
-      "popularity" : 50,
-      "preview_url" : "https://p.scdn.co/mp3-preview/b194b130ce44c1182a5f319e4b26de7a293204a3",
-    "danceability" : 0.669,
-    "energy" : 0.798,
- "valence" : 0.477,
-    "tempo" : 139.938
-    },
     {
       "id" : "4qqArAiTPueDxIp7cf87h7",
       "name" : "Final Song",
@@ -309,9 +300,30 @@ var dataset = [ {
     "energy" : 0.583,
     "valence" : 0.965,
     "tempo" : 117.000
+    },
+    {
+      "id" : "2XQ1tVtmHNKBOxaCbjYxdn",
+  "name" : "Everyday",
+  "popularity" : 56,
+  "preview_url" : "https://p.scdn.co/mp3-preview/966a79a6a2e3170d6cb9c44e253e0701c912a2d4",
+  "danceability" : 0.626,
+  "energy" : 0.708,
+  "valence" : 0.418,
+  "tempo" : 115.000
+    },
+    {
+"id" : "58CrldAc1Z5WIBozT1NMJH",
+  "name" : "Ordinary People",
+  "popularity" : 71,
+  "preview_url" : "https://p.scdn.co/mp3-preview/9dec46f2a5152cfaed32c29160d22bb29268f8be",
+   "danceability" : 0.469,
+  "energy" : 0.132,
+   "valence" : 0.360,
+  "tempo" : 67.011
     }
-
 ];
+
+var curr_feature = "danceability";
 // var dataset = d3.json("init_playlist.json", function(data) {
 //   dataset = data;
 // });
@@ -321,9 +333,9 @@ var dataset = [ {
 
 
 // call the method below
-showScatterPlot(dataset);
+showScatterPlot(dataset, curr_feature);
 
-function showScatterPlot(data) {
+function showScatterPlot(data, feature) {
     // just to have some space around items. 
     var margins = {
         "left": 40,
@@ -355,7 +367,7 @@ function showScatterPlot(data) {
     // this does the same as for the y axis but maps from the rating variable to the height to 0. 
     var y = d3.scale.linear()
         .domain(d3.extent(data, function (d) {
-        return d.danceability;
+        return d[curr_feature];
     }))
     // Note that height goes first due to the weird SVG coordinate system
     .range([height - margins.top - margins.bottom, 0]);
@@ -377,7 +389,7 @@ function showScatterPlot(data) {
         .attr("text-anchor", "end")
         .attr("x", 35)
         .attr("y", -5)
-        .text("Danceability");
+        .text(toTitleCase(curr_feature));
 
 
     // this is the actual definition of our x and y axes. The orientation refers to where the labels appear - for the x axis, below or above the line, and for the y axis, left or right of the line. Tick padding refers to how much space between the tick and the label. There are other parameters too - see https://github.com/mbostock/d3/wiki/SVG-Axes for more information
@@ -398,7 +410,7 @@ function showScatterPlot(data) {
     var chocolateGroup = chocolate.enter().append("g").attr("class", "node")
     // this is how we set the position of the items. Translate is an incredibly useful function for rotating and positioning items 
     .attr('transform', function (d) {
-        return "translate(" + x(d.popularity) + "," + y(d.danceability) + ")";
+        return "translate(" + x(d.popularity) + "," + y(d[curr_feature]) + ")";
     });
 
     // we add our first graphics element! A circle! 
@@ -421,6 +433,10 @@ function showScatterPlot(data) {
     });
 }
 
+  function toTitleCase(str) {
+        return str.replace(/\w\S*/g, function (txt) {return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+    }
+
   function update_scatter(d) { //, feature) {
   console.log("logging from index 428");
   console.log(d);
@@ -441,6 +457,7 @@ function showScatterPlot(data) {
             return d.name;
     });
   }
+
 
 
 
@@ -547,6 +564,12 @@ function showScatterPlot(data) {
         })
         bar.selectAll("rect").data(filtered_dataset).exit().remove();
       }
+
+        d3.select('#scatter_selection').on('change', function() {
+        curr_feature = d3.select(this).property('value');
+        d3.select("svg").remove();
+        showScatterPlot(dataset, curr_feature);
+        });
 
       // d3.select('#gauge_selection').on('change', function() {
       //   feature = d3.select(this).property('value');

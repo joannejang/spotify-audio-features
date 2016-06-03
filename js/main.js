@@ -216,7 +216,7 @@ var two_tracks = track_one + track_two;
                 console.log(object_to_add);
                 dataset[dataset.length] = object_to_add;
                 d3.select("svg").remove();
-                showScatterPlot(dataset);
+                showScatterPlot(dataset, curr_feature);
                 //update_scatter(object_to_add);
                 update_track(dataset, true);
             } else {
@@ -235,15 +235,16 @@ var two_tracks = track_one + track_two;
 
     }
 
-    function update_track(dataset, one) {
+    function update_track(track_obj, one) {
         if (one) {
-            var value = '<div style="width: 400px; height: 400px;"><img src="' + getSuitableImage(dataset[0].album.images) + '"/></div>';
+            var value = '<div style="width: 400px; height: 400px;"><img src="' + getSuitableImage(track_obj[0].album.images) + '"/></div>';
             document.getElementById('track-one').innerHTML = value;   
-            document.getElementById('track-title').innerHTML = 'Title: ' + dataset[0].name;
-            document.getElementById('track-artist').innerHTML = 'Artist: ' + dataset[0].artists[0].name;         
-            document.getElementById('track-album').innerHTML = 'Album: ' + dataset[0].album.name;
+            document.getElementById('track-title').innerHTML = 'Title: ' + track_obj[0].name;
+            document.getElementById('track-artist').innerHTML = 'Artist: ' + track_obj[0].artists[0].name;         
+            document.getElementById('track-album').innerHTML = 'Album: <i>' + track_obj[0].album.name + '</i>';
+            document.getElementById('track-audio-features').innerHTML = '<b>Features</b><ul>' + '<li>Danceability: ' + dataset[dataset.length-1].danceability + '</li>' + '<li>Valence: ' + dataset[dataset.length-1].valence + '</li>' + '<li>Tempo: ' + dataset[dataset.length-1].tempo + '</li>' + '<li>Energy: ' + dataset[dataset.length-1].energy + '</li>' +'</ul>';
         } else {
-            var value = '<div style="width: 400px; height: 400px;"><img src="' + getSuitableImage(dataset[1].album.images) + '"/></div>';
+            var value = '<div style="width: 400px; height: 400px;"><img src="' + getSuitableImage(track_obj[1].album.images) + '"/></div>';
             document.getElementById('track-two').innerHTML = value;            
         }
     }
