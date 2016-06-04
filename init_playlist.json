@@ -1,0 +1,617 @@
+{
+  "href" : "https://api.spotify.com/v1/users/joannejang/playlists/15J7i1wqn3b9PjANhtNfoq/tracks?offset=0&limit=100",
+  "items" : [ {
+    "added_at" : "2016-06-03T03:19:07Z",
+    "added_by" : {
+      "external_urls" : {
+        "spotify" : "http://open.spotify.com/user/joannejang"
+      },
+      "href" : "https://api.spotify.com/v1/users/joannejang",
+      "id" : "joannejang",
+      "type" : "user",
+      "uri" : "spotify:user:joannejang"
+    },
+    "is_local" : false,
+    "track" : {
+      "album" : {
+        "album_type" : "single",
+        "available_markets" : [ "AR", "AU", "AT", "BE", "BO", "BR", "BG", "CA", "CL", "CO", "CR", "CY", "CZ", "DK", "DO", "DE", "EC", "EE", "SV", "FI", "FR", "GR", "GT", "HN", "HK", "HU", "IS", "IE", "IT", "LV", "LT", "LU", "MY", "MT", "MX", "NL", "NZ", "NI", "NO", "PA", "PY", "PE", "PH", "PL", "PT", "SG", "SK", "ES", "CH", "TW", "TR", "UY", "GB", "AD", "LI", "MC", "ID" ],
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/album/7wFsG5BDL7B2UqoK8FgTfk"
+        },
+        "href" : "https://api.spotify.com/v1/albums/7wFsG5BDL7B2UqoK8FgTfk",
+        "id" : "7wFsG5BDL7B2UqoK8FgTfk",
+        "images" : [ {
+          "height" : 640,
+          "url" : "https://i.scdn.co/image/f8b1bc03f45609fe08ecc4f41c8e923954632251",
+          "width" : 640
+        }, {
+          "height" : 300,
+          "url" : "https://i.scdn.co/image/55603688801636e580e18d25a3d7ad94a212c4de",
+          "width" : 300
+        }, {
+          "height" : 64,
+          "url" : "https://i.scdn.co/image/cb0bfde65370508aee5835a9a6d5d63f40f90d4d",
+          "width" : 64
+        } ],
+        "name" : "Work from Home",
+        "type" : "album",
+        "uri" : "spotify:album:7wFsG5BDL7B2UqoK8FgTfk"
+      },
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/1l8Fu6IkuTP0U5QetQJ5Xt"
+        },
+        "href" : "https://api.spotify.com/v1/artists/1l8Fu6IkuTP0U5QetQJ5Xt",
+        "id" : "1l8Fu6IkuTP0U5QetQJ5Xt",
+        "name" : "Fifth Harmony",
+        "type" : "artist",
+        "uri" : "spotify:artist:1l8Fu6IkuTP0U5QetQJ5Xt"
+      }, {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/7c0XG5cIJTrrAgEC3ULPiq"
+        },
+        "href" : "https://api.spotify.com/v1/artists/7c0XG5cIJTrrAgEC3ULPiq",
+        "id" : "7c0XG5cIJTrrAgEC3ULPiq",
+        "name" : "Ty Dolla $ign",
+        "type" : "artist",
+        "uri" : "spotify:artist:7c0XG5cIJTrrAgEC3ULPiq"
+      } ],
+      "available_markets" : [ "AR", "AU", "AT", "BE", "BO", "BR", "BG", "CA", "CL", "CO", "CR", "CY", "CZ", "DK", "DO", "DE", "EC", "EE", "SV", "FI", "FR", "GR", "GT", "HN", "HK", "HU", "IS", "IE", "IT", "LV", "LT", "LU", "MY", "MT", "MX", "NL", "NZ", "NI", "NO", "PA", "PY", "PE", "PH", "PL", "PT", "SG", "SK", "ES", "CH", "TW", "TR", "UY", "GB", "AD", "LI", "MC", "ID" ],
+      "disc_number" : 1,
+      "duration_ms" : 216575,
+      "explicit" : false,
+      "external_ids" : {
+        "isrc" : "USSM11600251"
+      },
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/0SJPThTy7ynySPF4euczx7"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/0SJPThTy7ynySPF4euczx7",
+      "id" : "0SJPThTy7ynySPF4euczx7",
+      "name" : "Work from Home",
+      "popularity" : 100,
+      "preview_url" : "https://p.scdn.co/mp3-preview/351a86db5a906274e7b09dbfec8170e159f8e665",
+      "track_number" : 1,
+      "type" : "track",
+      "uri" : "spotify:track:0SJPThTy7ynySPF4euczx7"
+    }
+  }, {
+    "added_at" : "2016-06-03T03:19:13Z",
+    "added_by" : {
+      "external_urls" : {
+        "spotify" : "http://open.spotify.com/user/joannejang"
+      },
+      "href" : "https://api.spotify.com/v1/users/joannejang",
+      "id" : "joannejang",
+      "type" : "user",
+      "uri" : "spotify:user:joannejang"
+    },
+    "is_local" : false,
+    "track" : {
+      "album" : {
+        "album_type" : "single",
+        "available_markets" : [ ],
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/album/42uGLrLCAaQC4Mw7d33WeX"
+        },
+        "href" : "https://api.spotify.com/v1/albums/42uGLrLCAaQC4Mw7d33WeX",
+        "id" : "42uGLrLCAaQC4Mw7d33WeX",
+        "images" : [ {
+          "height" : 640,
+          "url" : "https://i.scdn.co/image/7105ec559a47e817c151d7869ee4444a7608535a",
+          "width" : 640
+        }, {
+          "height" : 300,
+          "url" : "https://i.scdn.co/image/53cade3f121243b5ba7a5747ff306bc220d41e59",
+          "width" : 300
+        }, {
+          "height" : 64,
+          "url" : "https://i.scdn.co/image/f1b044854cf3c4ca0203cc1001d40238cd8299ea",
+          "width" : 64
+        } ],
+        "name" : "One Dance",
+        "type" : "album",
+        "uri" : "spotify:album:42uGLrLCAaQC4Mw7d33WeX"
+      },
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/3TVXtAsR1Inumwj472S9r4"
+        },
+        "href" : "https://api.spotify.com/v1/artists/3TVXtAsR1Inumwj472S9r4",
+        "id" : "3TVXtAsR1Inumwj472S9r4",
+        "name" : "Drake",
+        "type" : "artist",
+        "uri" : "spotify:artist:3TVXtAsR1Inumwj472S9r4"
+      }, {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/562nJv95sm1VixfqmZwc9M"
+        },
+        "href" : "https://api.spotify.com/v1/artists/562nJv95sm1VixfqmZwc9M",
+        "id" : "562nJv95sm1VixfqmZwc9M",
+        "name" : "Wiz Kid",
+        "type" : "artist",
+        "uri" : "spotify:artist:562nJv95sm1VixfqmZwc9M"
+      }, {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/2i6zkLCRqT8Jn0gnigXPe7"
+        },
+        "href" : "https://api.spotify.com/v1/artists/2i6zkLCRqT8Jn0gnigXPe7",
+        "id" : "2i6zkLCRqT8Jn0gnigXPe7",
+        "name" : "Kyla",
+        "type" : "artist",
+        "uri" : "spotify:artist:2i6zkLCRqT8Jn0gnigXPe7"
+      } ],
+      "available_markets" : [ ],
+      "disc_number" : 1,
+      "duration_ms" : 173974,
+      "explicit" : false,
+      "external_ids" : {
+        "isrc" : "USCM51600028"
+      },
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/11hqMWwX7sF3sOGdtijofF"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/11hqMWwX7sF3sOGdtijofF",
+      "id" : "11hqMWwX7sF3sOGdtijofF",
+      "name" : "One Dance",
+      "popularity" : 92,
+      "preview_url" : null,
+      "track_number" : 1,
+      "type" : "track",
+      "uri" : "spotify:track:11hqMWwX7sF3sOGdtijofF"
+    }
+  }, {
+    "added_at" : "2016-06-03T03:19:17Z",
+    "added_by" : {
+      "external_urls" : {
+        "spotify" : "http://open.spotify.com/user/joannejang"
+      },
+      "href" : "https://api.spotify.com/v1/users/joannejang",
+      "id" : "joannejang",
+      "type" : "user",
+      "uri" : "spotify:user:joannejang"
+    },
+    "is_local" : false,
+    "track" : {
+      "album" : {
+        "album_type" : "single",
+        "available_markets" : [ "AR", "BO", "BR", "BG", "CA", "CL", "CO", "CR", "CY", "CZ", "DO", "EC", "EE", "SV", "GR", "GT", "HN", "HK", "HU", "IS", "IT", "LV", "LT", "MY", "MT", "MX", "NL", "NI", "PA", "PY", "PE", "PH", "PL", "PT", "SG", "SK", "ES", "TW", "TR", "UY", "US", "AD", "LI", "ID" ],
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/album/180JCsfKIupc7PHG5CQfz7"
+        },
+        "href" : "https://api.spotify.com/v1/albums/180JCsfKIupc7PHG5CQfz7",
+        "id" : "180JCsfKIupc7PHG5CQfz7",
+        "images" : [ {
+          "height" : 640,
+          "url" : "https://i.scdn.co/image/4fc91cb10b309770a05fc742eaed8f7ddc987c6d",
+          "width" : 640
+        }, {
+          "height" : 300,
+          "url" : "https://i.scdn.co/image/6c06ff33d88347baac196606877cf0454e690b71",
+          "width" : 300
+        }, {
+          "height" : 64,
+          "url" : "https://i.scdn.co/image/7a470c89901609014c4447f4d8a3b295a8e0261b",
+          "width" : 64
+        } ],
+        "name" : "Sex",
+        "type" : "album",
+        "uri" : "spotify:album:180JCsfKIupc7PHG5CQfz7"
+      },
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/7DMveApC7UnC2NPfPvlHSU"
+        },
+        "href" : "https://api.spotify.com/v1/artists/7DMveApC7UnC2NPfPvlHSU",
+        "id" : "7DMveApC7UnC2NPfPvlHSU",
+        "name" : "Cheat Codes",
+        "type" : "artist",
+        "uri" : "spotify:artist:7DMveApC7UnC2NPfPvlHSU"
+      }, {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/4LcUpNlXFEleaLlelmkv2R"
+        },
+        "href" : "https://api.spotify.com/v1/artists/4LcUpNlXFEleaLlelmkv2R",
+        "id" : "4LcUpNlXFEleaLlelmkv2R",
+        "name" : "Kris Kross Amsterdam",
+        "type" : "artist",
+        "uri" : "spotify:artist:4LcUpNlXFEleaLlelmkv2R"
+      } ],
+      "available_markets" : [ "AR", "BO", "BR", "BG", "CA", "CL", "CO", "CR", "CY", "CZ", "DO", "EC", "EE", "SV", "GR", "GT", "HN", "HK", "HU", "IS", "IT", "LV", "LT", "MY", "MT", "MX", "NL", "NI", "PA", "PY", "PE", "PH", "PL", "PT", "SG", "SK", "ES", "TW", "TR", "UY", "US", "AD", "LI", "ID" ],
+      "disc_number" : 1,
+      "duration_ms" : 228361,
+      "explicit" : false,
+      "external_ids" : {
+        "isrc" : "NLZ541600026"
+      },
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/4tRLfSHpbjlIjV97RPWr9Y"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/4tRLfSHpbjlIjV97RPWr9Y",
+      "id" : "4tRLfSHpbjlIjV97RPWr9Y",
+      "name" : "Sex",
+      "popularity" : 92,
+      "preview_url" : "https://p.scdn.co/mp3-preview/2835be328e672cf69025a4425f127a48c317f7c8",
+      "track_number" : 1,
+      "type" : "track",
+      "uri" : "spotify:track:4tRLfSHpbjlIjV97RPWr9Y"
+    }
+  }, {
+    "added_at" : "2016-06-03T03:19:26Z",
+    "added_by" : {
+      "external_urls" : {
+        "spotify" : "http://open.spotify.com/user/joannejang"
+      },
+      "href" : "https://api.spotify.com/v1/users/joannejang",
+      "id" : "joannejang",
+      "type" : "user",
+      "uri" : "spotify:user:joannejang"
+    },
+    "is_local" : false,
+    "track" : {
+      "album" : {
+        "album_type" : "single",
+        "available_markets" : [ "AR", "AU", "BO", "BR", "CL", "CO", "CR", "DO", "EC", "SV", "GT", "HN", "HK", "MY", "NZ", "NI", "PA", "PY", "PE", "PH", "SG", "TW", "UY", "ID" ],
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/album/20LbBwU7a699pdcA0bOEAN"
+        },
+        "href" : "https://api.spotify.com/v1/albums/20LbBwU7a699pdcA0bOEAN",
+        "id" : "20LbBwU7a699pdcA0bOEAN",
+        "images" : [ {
+          "height" : 640,
+          "url" : "https://i.scdn.co/image/98c37ebe646f725b4d27876f237113ef9acfc940",
+          "width" : 640
+        }, {
+          "height" : 300,
+          "url" : "https://i.scdn.co/image/dba0898ed90a0f1cab4e3897178cb09c63c036fd",
+          "width" : 300
+        }, {
+          "height" : 64,
+          "url" : "https://i.scdn.co/image/7399df245b73a9501e894e7ee4f6a5dd525340ba",
+          "width" : 64
+        } ],
+        "name" : "Say It",
+        "type" : "album",
+        "uri" : "spotify:album:20LbBwU7a699pdcA0bOEAN"
+      },
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/6nxWCVXbOlEVRexSbLsTer"
+        },
+        "href" : "https://api.spotify.com/v1/artists/6nxWCVXbOlEVRexSbLsTer",
+        "id" : "6nxWCVXbOlEVRexSbLsTer",
+        "name" : "Flume",
+        "type" : "artist",
+        "uri" : "spotify:artist:6nxWCVXbOlEVRexSbLsTer"
+      }, {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/4NHQUGzhtTLFvgF5SZesLK"
+        },
+        "href" : "https://api.spotify.com/v1/artists/4NHQUGzhtTLFvgF5SZesLK",
+        "id" : "4NHQUGzhtTLFvgF5SZesLK",
+        "name" : "Tove Lo",
+        "type" : "artist",
+        "uri" : "spotify:artist:4NHQUGzhtTLFvgF5SZesLK"
+      } ],
+      "available_markets" : [ "AR", "AU", "BO", "BR", "CL", "CO", "CR", "DO", "EC", "SV", "GT", "HN", "HK", "MY", "NZ", "NI", "PA", "PY", "PE", "PH", "SG", "TW", "UY", "ID" ],
+      "disc_number" : 1,
+      "duration_ms" : 262521,
+      "explicit" : true,
+      "external_ids" : {
+        "isrc" : "AUFF01600799"
+      },
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/3tW6NhWt9RgFpZxJBWYA3U"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/3tW6NhWt9RgFpZxJBWYA3U",
+      "id" : "3tW6NhWt9RgFpZxJBWYA3U",
+      "name" : "Say It",
+      "popularity" : 77,
+      "preview_url" : "https://p.scdn.co/mp3-preview/e5e45bd32405178692f8d1f5cf159413dc1a67cc",
+      "track_number" : 1,
+      "type" : "track",
+      "uri" : "spotify:track:3tW6NhWt9RgFpZxJBWYA3U"
+    }
+  }, {
+    "added_at" : "2016-06-03T03:19:39Z",
+    "added_by" : {
+      "external_urls" : {
+        "spotify" : "http://open.spotify.com/user/joannejang"
+      },
+      "href" : "https://api.spotify.com/v1/users/joannejang",
+      "id" : "joannejang",
+      "type" : "user",
+      "uri" : "spotify:user:joannejang"
+    },
+    "is_local" : false,
+    "track" : {
+      "album" : {
+        "album_type" : "album",
+        "available_markets" : [ "CA", "MX", "US" ],
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/album/3t8HFQNlwLBW7htwLvFfzA"
+        },
+        "href" : "https://api.spotify.com/v1/albums/3t8HFQNlwLBW7htwLvFfzA",
+        "id" : "3t8HFQNlwLBW7htwLvFfzA",
+        "images" : [ {
+          "height" : 635,
+          "url" : "https://i.scdn.co/image/55ea4b05b0e75ab396bf2943a33dbc7bc30c52c1",
+          "width" : 640
+        }, {
+          "height" : 297,
+          "url" : "https://i.scdn.co/image/886ffc181f08d65369f68e13574c8b633c9f113a",
+          "width" : 300
+        }, {
+          "height" : 63,
+          "url" : "https://i.scdn.co/image/1980af8c3e51ea20172104b9680f249bff773d87",
+          "width" : 64
+        } ],
+        "name" : "The Dutchess (Explicit Version)",
+        "type" : "album",
+        "uri" : "spotify:album:3t8HFQNlwLBW7htwLvFfzA"
+      },
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/3r17AfJCCUqC9Lf0OAc73G"
+        },
+        "href" : "https://api.spotify.com/v1/artists/3r17AfJCCUqC9Lf0OAc73G",
+        "id" : "3r17AfJCCUqC9Lf0OAc73G",
+        "name" : "Fergie",
+        "type" : "artist",
+        "uri" : "spotify:artist:3r17AfJCCUqC9Lf0OAc73G"
+      }, {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/085pc2PYOi8bGKj0PNjekA"
+        },
+        "href" : "https://api.spotify.com/v1/artists/085pc2PYOi8bGKj0PNjekA",
+        "id" : "085pc2PYOi8bGKj0PNjekA",
+        "name" : "will.i.am",
+        "type" : "artist",
+        "uri" : "spotify:artist:085pc2PYOi8bGKj0PNjekA"
+      } ],
+      "available_markets" : [ "CA", "MX", "US" ],
+      "disc_number" : 1,
+      "duration_ms" : 292373,
+      "explicit" : true,
+      "external_ids" : {
+        "isrc" : "USUM70609117"
+      },
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/1D066zixBwqFYqBhKgdPzp"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/1D066zixBwqFYqBhKgdPzp",
+      "id" : "1D066zixBwqFYqBhKgdPzp",
+      "name" : "Fergalicious",
+      "popularity" : 66,
+      "preview_url" : "https://p.scdn.co/mp3-preview/5d742169f69149e20909a454b3999f3a9428408d",
+      "track_number" : 1,
+      "type" : "track",
+      "uri" : "spotify:track:1D066zixBwqFYqBhKgdPzp"
+    }
+  }, {
+    "added_at" : "2016-06-03T03:19:55Z",
+    "added_by" : {
+      "external_urls" : {
+        "spotify" : "http://open.spotify.com/user/joannejang"
+      },
+      "href" : "https://api.spotify.com/v1/users/joannejang",
+      "id" : "joannejang",
+      "type" : "user",
+      "uri" : "spotify:user:joannejang"
+    },
+    "is_local" : false,
+    "track" : {
+      "album" : {
+        "album_type" : "single",
+        "available_markets" : [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "ID", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MY", "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY", "SE", "SG", "SK", "SV", "TR", "TW", "UY" ],
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/album/5jfuIbTeaLhBZxsCVv3QyM"
+        },
+        "href" : "https://api.spotify.com/v1/albums/5jfuIbTeaLhBZxsCVv3QyM",
+        "id" : "5jfuIbTeaLhBZxsCVv3QyM",
+        "images" : [ {
+          "height" : 640,
+          "url" : "https://i.scdn.co/image/dc4cfaabcc3536208762a48d24a29877e1fbedad",
+          "width" : 640
+        }, {
+          "height" : 300,
+          "url" : "https://i.scdn.co/image/4c79a256ec7fa781fa08937af9de30117b03d4b3",
+          "width" : 300
+        }, {
+          "height" : 64,
+          "url" : "https://i.scdn.co/image/3640c0ef45f57fd0056c1c4907f6d3be0f420328",
+          "width" : 64
+        } ],
+        "name" : "Fast Car (Radio Edit)",
+        "type" : "album",
+        "uri" : "spotify:album:5jfuIbTeaLhBZxsCVv3QyM"
+      },
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/1HBjj22wzbscIZ9sEb5dyf"
+        },
+        "href" : "https://api.spotify.com/v1/artists/1HBjj22wzbscIZ9sEb5dyf",
+        "id" : "1HBjj22wzbscIZ9sEb5dyf",
+        "name" : "Jonas Blue",
+        "type" : "artist",
+        "uri" : "spotify:artist:1HBjj22wzbscIZ9sEb5dyf"
+      }, {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/2zzpznMuhKlKlqh1ma7Sms"
+        },
+        "href" : "https://api.spotify.com/v1/artists/2zzpznMuhKlKlqh1ma7Sms",
+        "id" : "2zzpznMuhKlKlqh1ma7Sms",
+        "name" : "Dakota",
+        "type" : "artist",
+        "uri" : "spotify:artist:2zzpznMuhKlKlqh1ma7Sms"
+      } ],
+      "available_markets" : [ "AD", "AR", "AT", "AU", "BE", "BG", "BO", "BR", "CH", "CL", "CO", "CR", "CY", "CZ", "DE", "DK", "DO", "EC", "EE", "ES", "FI", "FR", "GB", "GR", "GT", "HK", "HN", "HU", "ID", "IE", "IS", "IT", "LI", "LT", "LU", "LV", "MC", "MT", "MY", "NI", "NL", "NO", "NZ", "PA", "PE", "PH", "PL", "PT", "PY", "SE", "SG", "SK", "SV", "TR", "TW", "UY" ],
+      "disc_number" : 1,
+      "duration_ms" : 212424,
+      "explicit" : false,
+      "external_ids" : {
+        "isrc" : "GBUM71507621"
+      },
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/6OZh916QF8XNunWaP97WEZ"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/6OZh916QF8XNunWaP97WEZ",
+      "id" : "6OZh916QF8XNunWaP97WEZ",
+      "name" : "Fast Car - Radio Edit",
+      "popularity" : 94,
+      "preview_url" : "https://p.scdn.co/mp3-preview/750c4e854bbb8d1e11e7eea04047f6a9e9a0730f",
+      "track_number" : 1,
+      "type" : "track",
+      "uri" : "spotify:track:6OZh916QF8XNunWaP97WEZ"
+    }
+  }, {
+    "added_at" : "2016-06-03T03:20:18Z",
+    "added_by" : {
+      "external_urls" : {
+        "spotify" : "http://open.spotify.com/user/joannejang"
+      },
+      "href" : "https://api.spotify.com/v1/users/joannejang",
+      "id" : "joannejang",
+      "type" : "user",
+      "uri" : "spotify:user:joannejang"
+    },
+    "is_local" : false,
+    "track" : {
+      "album" : {
+        "album_type" : "single",
+        "available_markets" : [ "AR", "AU", "BE", "BO", "BR", "BG", "CA", "CL", "CO", "CR", "CY", "CZ", "DK", "DO", "EC", "EE", "SV", "FI", "FR", "GR", "GT", "HN", "HK", "HU", "IS", "IE", "IT", "LV", "LT", "LU", "MY", "MT", "MX", "NL", "NZ", "NI", "NO", "PA", "PY", "PE", "PH", "PL", "PT", "SG", "SK", "ES", "SE", "TW", "TR", "UY", "GB", "AD", "LI", "MC", "ID" ],
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/album/4sbZHOW6I2LTTjlRJbhVtA"
+        },
+        "href" : "https://api.spotify.com/v1/albums/4sbZHOW6I2LTTjlRJbhVtA",
+        "id" : "4sbZHOW6I2LTTjlRJbhVtA",
+        "images" : [ {
+          "height" : 640,
+          "url" : "https://i.scdn.co/image/f22646130f220982776997a07eca24b5cd268989",
+          "width" : 640
+        }, {
+          "height" : 300,
+          "url" : "https://i.scdn.co/image/9bdd59379eb0e0815301c00fb985b6549f5221eb",
+          "width" : 300
+        }, {
+          "height" : 64,
+          "url" : "https://i.scdn.co/image/02f0492fade559ee77601b6d67a0595f2dc59731",
+          "width" : 64
+        } ],
+        "name" : "Gold",
+        "type" : "album",
+        "uri" : "spotify:album:4sbZHOW6I2LTTjlRJbhVtA"
+      },
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/4u5smJBskI6Adzv08PuiUP"
+        },
+        "href" : "https://api.spotify.com/v1/artists/4u5smJBskI6Adzv08PuiUP",
+        "id" : "4u5smJBskI6Adzv08PuiUP",
+        "name" : "Kiiara",
+        "type" : "artist",
+        "uri" : "spotify:artist:4u5smJBskI6Adzv08PuiUP"
+      } ],
+      "available_markets" : [ "AR", "AU", "BE", "BO", "BR", "BG", "CA", "CL", "CO", "CR", "CY", "CZ", "DK", "DO", "EC", "EE", "SV", "FI", "FR", "GR", "GT", "HN", "HK", "HU", "IS", "IE", "IT", "LV", "LT", "LU", "MY", "MT", "MX", "NL", "NZ", "NI", "NO", "PA", "PY", "PE", "PH", "PL", "PT", "SG", "SK", "ES", "SE", "TW", "TR", "UY", "GB", "AD", "LI", "MC", "ID" ],
+      "disc_number" : 1,
+      "duration_ms" : 225882,
+      "explicit" : false,
+      "external_ids" : {
+        "isrc" : "USAT21503773"
+      },
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/6WhzFzROw3aq3rPWjgYlxr"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/6WhzFzROw3aq3rPWjgYlxr",
+      "id" : "6WhzFzROw3aq3rPWjgYlxr",
+      "name" : "Gold",
+      "popularity" : 83,
+      "preview_url" : "https://p.scdn.co/mp3-preview/c11c15826334b09f98922620970d6c65e44078b8",
+      "track_number" : 1,
+      "type" : "track",
+      "uri" : "spotify:track:6WhzFzROw3aq3rPWjgYlxr"
+    }
+  }, {
+    "added_at" : "2016-06-03T03:20:22Z",
+    "added_by" : {
+      "external_urls" : {
+        "spotify" : "http://open.spotify.com/user/joannejang"
+      },
+      "href" : "https://api.spotify.com/v1/users/joannejang",
+      "id" : "joannejang",
+      "type" : "user",
+      "uri" : "spotify:user:joannejang"
+    },
+    "is_local" : false,
+    "track" : {
+      "album" : {
+        "album_type" : "single",
+        "available_markets" : [ "AR", "AU", "AT", "BE", "BO", "BR", "BG", "CA", "CL", "CO", "CR", "CY", "CZ", "DK", "DO", "DE", "EC", "EE", "SV", "FI", "FR", "GR", "GT", "HN", "HK", "HU", "IS", "IE", "IT", "LV", "LT", "LU", "MY", "MT", "MX", "NL", "NZ", "NI", "NO", "PA", "PY", "PE", "PH", "PL", "PT", "SG", "SK", "ES", "SE", "CH", "TW", "TR", "UY", "US", "GB", "AD", "LI", "MC", "ID" ],
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/album/1SeQSCM5UqOtrst4p7iuYV"
+        },
+        "href" : "https://api.spotify.com/v1/albums/1SeQSCM5UqOtrst4p7iuYV",
+        "id" : "1SeQSCM5UqOtrst4p7iuYV",
+        "images" : [ {
+          "height" : 640,
+          "url" : "https://i.scdn.co/image/63945e8d8eb562edeb361d6fa392c0cc98de4162",
+          "width" : 640
+        }, {
+          "height" : 300,
+          "url" : "https://i.scdn.co/image/fe4eb310d39f40c827c4b4f536ce4cdf4f0e7b91",
+          "width" : 300
+        }, {
+          "height" : 64,
+          "url" : "https://i.scdn.co/image/c6b7c1597863ad0120085fdf5a5f5995c2d867a9",
+          "width" : 64
+        } ],
+        "name" : "So F**kin' Romantic (The Remixes)",
+        "type" : "album",
+        "uri" : "spotify:album:1SeQSCM5UqOtrst4p7iuYV"
+      },
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/1mU61l2mcjEFraXZLpvVMo"
+        },
+        "href" : "https://api.spotify.com/v1/artists/1mU61l2mcjEFraXZLpvVMo",
+        "id" : "1mU61l2mcjEFraXZLpvVMo",
+        "name" : "Matthew Koma",
+        "type" : "artist",
+        "uri" : "spotify:artist:1mU61l2mcjEFraXZLpvVMo"
+      }, {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/0FIENxWAWlIBKgjGOoktIo"
+        },
+        "href" : "https://api.spotify.com/v1/artists/0FIENxWAWlIBKgjGOoktIo",
+        "id" : "0FIENxWAWlIBKgjGOoktIo",
+        "name" : "Tim Gunter",
+        "type" : "artist",
+        "uri" : "spotify:artist:0FIENxWAWlIBKgjGOoktIo"
+      } ],
+      "available_markets" : [ "AR", "AU", "AT", "BE", "BO", "BR", "BG", "CA", "CL", "CO", "CR", "CY", "CZ", "DK", "DO", "DE", "EC", "EE", "SV", "FI", "FR", "GR", "GT", "HN", "HK", "HU", "IS", "IE", "IT", "LV", "LT", "LU", "MY", "MT", "MX", "NL", "NZ", "NI", "NO", "PA", "PY", "PE", "PH", "PL", "PT", "SG", "SK", "ES", "SE", "CH", "TW", "TR", "UY", "US", "GB", "AD", "LI", "MC", "ID" ],
+      "disc_number" : 1,
+      "duration_ms" : 234857,
+      "explicit" : true,
+      "external_ids" : {
+        "isrc" : "USRC11501879"
+      },
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/7axJj8BJF6UFqQIQfROvlN"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/7axJj8BJF6UFqQIQfROvlN",
+      "id" : "7axJj8BJF6UFqQIQfROvlN",
+      "name" : "So F**kin' Romantic - Tim Gunter Remix",
+      "popularity" : 50,
+      "preview_url" : "https://p.scdn.co/mp3-preview/b194b130ce44c1182a5f319e4b26de7a293204a3",
+      "track_number" : 2,
+      "type" : "track",
+      "uri" : "spotify:track:7axJj8BJF6UFqQIQfROvlN"
+    }
+  } ],
+  "limit" : 100,
+  "next" : null,
+  "offset" : 0,
+  "previous" : null,
+  "total" : 8
+}

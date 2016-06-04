@@ -449,8 +449,9 @@ function showScatterPlot(data, feature) {
         html: true, 
         title: function() {
           var d = this.__data__;
-          var name = d.name, artist = d.artist, popularity = d.popularity;
+          var name = d.name, artist = d.artist, popularity = d.popularity, curr_feature = d[curr_feature];
           return '"' + name + '" - ' + artist + '<br/>Popularity: ' + popularity;
+          //+ toTitleCase(curr_feature) + ': ' + curr_feature;
         }
       });
 }
