@@ -1,5 +1,5 @@
 //var OAuthToken = "BQAf2W0sc0djA1iREvdJFrV-MvkSCEWYuA4l3OK76mG2HcVHWXiRkfDp-p6pByn9VWx94Ma9vt9CDOGsYm3GnWe_BtmTzAFSOOivleUNJln4YIl36Oi69--qRl187aUG83k_0G6UtC05BR716kMa9zQ";
-var accessToken = "BQCDGg4ec3oY9kiTe7JJR3K-W2bAnaAHoybZqAPI3V3q4-spevmqCcNq2Kq5poQZxAGrStoMPNNoTpArSDUxAsxy6gPVrT2xu0GRVSLQuZx8mx4DrNalrDz4vofkTHgTbppznv6VloyQqQqTgZojRqU";
+var accessToken = "BQCNG_Oe-EjCIyT6SkYFB7NrMzUr8TkKjh1I4nxZiQssWF1XD4Z__RqxwPR0SK-fNVGH8H5Rsgt8jGyPtWkOXdHSzVGyBIxe_onvbjpw7ySO5fn3QU1ScgV-BOl00wy3BfAQkeQ8mFHGqBDrkHPd9Y5F73wMzeU";
 var localProxyApi = function (serverBasePath) {
 
   var getArtistRelatedArtists = function(artistId) {
