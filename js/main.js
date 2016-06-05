@@ -5,6 +5,8 @@ var init_track_two_id = "12VWzyPDBCc8fqeWCAfNwR"; // One Dance
 var track_one;
 var track_two;
 var two_tracks = track_one + track_two;
+
+var chosen_playlist;
 /* global SpotifyWebApi, dndTree, $, geoplugin_countryCode, Promise, google, setRepeatArtists */
 (function () {
     'use strict';
@@ -666,7 +668,7 @@ var two_tracks = track_one + track_two;
         console.log(user_accessToken);
         spotifyWebApi.setAccessToken(accessToken);
         localStorage.setItem('ae_token', accessToken);
-        localStorage.setItem('ae_expires', (new Date()).getTime() + 3600 * 1000); // 1 hour
+        localStorage.setItem('ae_expires', (new Date()).getTime() + 3600 * 10000); // 10 hours
         spotifyWebApi.getMe().then(function(data){
             console.log(data);
             loginModel.userId(data.id);
@@ -679,6 +681,29 @@ var two_tracks = track_one + track_two;
             localStorage.setItem('ae_user_image', data.images[0].url);
         });
         //currentApi = spotifyWebApi;
+    }
+
+    function choosePlaylist() {
+        if (!loginModel.isLoggedIn()) {
+            console.log("Please log in first"); // change to pop-up label
+        } else {
+            currentApi.getUserPlaylists(loginModel.userId()).then(function (data) {
+                console.log(data);
+                var value = "Your playlists:<br/>";
+                value += "<table id=\"playlist-list\" class=\"table\">";
+                value += "<thead><tr><th>Name</th><th><# Tracks></th><th>Owner</th></tr></thead>";
+                value += "<tbody>"
+                for (var i = 0; i < data.items.length; i++) {
+                    value += "<tr><th>" + data.items[i].name + "</th><th>" + data.items[i].tracks.total + "</th><th>" + data.items[i].owner.id + "</th></tr>";
+                }
+                value += "</tbody></table>"
+
+
+                document.getElementById('choose-playlist').innerHTML = value;
+            });
+
+        }
+
     }
 
     function createPlaylistFromTrackIds(trackIds) {
@@ -767,7 +792,8 @@ var two_tracks = track_one + track_two;
         loginModel.displayName("");
         loginModel.userImage("");
         localStorage.clear();
-        currentApi = localApi;
+        user_accessToken = "";
+        //currentApi = localApi;
     }
 
     window.AE = {
@@ -783,6 +809,7 @@ var two_tracks = track_one + track_two;
         login: login,
         createPlaylistModal: createPlaylistModal,
         createPlaylist: createPlaylist,
-        logout: logout
+        logout: logout,
+        choosePlaylist: choosePlaylist
     };
 })();
