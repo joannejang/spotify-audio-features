@@ -434,7 +434,7 @@ function showScatterPlot(data, feature, curr_feature_x_scatter_scope) {
     // the range maps the domain to values from 0 to the width minus the left and right margins (used to space out the visualization)
         .range([0, width - margins.left - margins.right]);
     } else { // date
-      x = d3.time.scale().domain([minDate, maxDate]).range([0, height - margins.top - margins.bottom]);
+      x = d3.time.scale().domain([minDate, maxDate]).range([0, width - margins.left - margins.right]);
     }
 
 
@@ -453,6 +453,7 @@ function showScatterPlot(data, feature, curr_feature_x_scatter_scope) {
     svg.append("g").attr("class", "y axis");
 
     // this is our X axis label. Nothing too special to see here.
+    console.log(curr_feature_x_scatter_scope);
     svg.append("text")
         .attr("fill", "#414241")
         .attr("text-anchor", "end")
