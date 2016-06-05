@@ -122,8 +122,35 @@
               <option value="energy">Energy</option>
               <option value="valence">Valence</option>
               <option value="tempo">Tempo</option>
+              <option value="loudness">Loudness</option>
+              <option value="speechiness">Speechiness</option>
+              <option value="acousticness">Acousticness</option>
+              <option value="instrumentalness">Instrumentalness</option>
+              <option value="liveness">Liveness</option>
+              <option value="valence">Valence</option>
             </select>
       </div>
+
+      <button id="delete">Clear Canvas</button>
+
+
+      <div id="comparison-selector">
+        <label style="display: inline-block; width: 200px; text-align: left; float: center"> Pick an audio feature to compare: </label>
+        <select id="comparison_selection">
+              <option value="danceability">Danceability</option> 
+              <option value="energy">Energy</option>
+              <option value="valence">Valence</option>
+              <option value="tempo">Tempo</option>
+              <option value="loudness">Loudness</option>
+              <option value="speechiness">Speechiness</option>
+              <option value="acousticness">Acousticness</option>
+              <option value="instrumentalness">Instrumentalness</option>
+              <option value="liveness">Liveness</option>
+              <option value="valence">Valence</option>
+            </select>
+      </div>
+
+
 
       <div id="track1" class="inline">Track 1
           <div id="track1-avatar"></div>
@@ -133,7 +160,7 @@
           <div id="progress1"></div>
       </div>
       <div id="track2" class="inline">Track 2
-          <div id="track1-avatar"></div>
+          <div id="track2-avatar"></div>
           <div id="track2-title"></div>
           <div id="track2-artist"></div>
           <div id="track2-album"></div>
@@ -207,7 +234,30 @@
 //         loudness:9.074, speechiness:0.0304, tempo:
 // 79.936, valence:0.37}]
 // var dataset = [{trackId: 1, danceability: 0.818, popularity: 90}, {trackId: 2, danceability: 0.575, popularity: 70}, {trackId: 3, danceability: 0.260, popularity: 80}]
-    var odd = true;
+var odd = true;
+var progress1;
+var progress2;
+var feature = "danceability";
+var d1;
+var d2;
+
+d3.select('#delete').on('click', function() {
+  dataset = [];
+  d3.select("svg").remove();
+  showScatterPlot();
+});
+
+d3.select('#comparison_selection').on('change', function() {
+    feature = d3.select(this).property('value');
+    update_radial();
+});
+
+function update_radial() {
+    progress1.update(d1[feature]);
+    progress2.update(d2[feature]);
+}
+
+
 var dataset = [ {
       "id" : "0SJPThTy7ynySPF4euczx7",
       "name" : "Work from Home",
@@ -444,6 +494,8 @@ function showScatterPlot(data, feature) {
 
     function playForTrack(track_to_play) {
         if (currentPlayingSongId == track_to_play.id) {
+            console.log("umbrella");
+            console.log(track_to_play.id);
             return;
         }
 
@@ -463,7 +515,9 @@ function showScatterPlot(data, feature) {
 
 
    $('svg circle').mouseover(function() {
+    console.log("mouseover");
       var d = this.__data__;
+    console.log(d.preview_url);
       playForTrack({preview_url: d.preview_url, id:d.id});
     });
 
@@ -475,20 +529,57 @@ function showScatterPlot(data, feature) {
 
   $('svg circle').click(function() {
     var d = this.__data__;
+    console.log("Clicked");
+    console.log(d);
     if (odd) {
-      var value = '<div style="width: 400px; height: 400px;"><img src="' + AE.getSuitableImage(d.album.images) + '"/></div>';
-      console.log(d.image);
-      console.log(d);
+      d1 = d;
+      var value = '<div style="width: 400px; height: 400px;"><img src="' + d.image + '"/></div>';
       document.getElementById('track1-avatar').innerHTML = value;   
       document.getElementById('track1-title').innerHTML = 'Title: <b>' + d.name + '</b>';
       document.getElementById('track1-artist').innerHTML = 'Artist: <b>' + d.artist + '</b>';         
-      document.getElementById('track1-album').innerHTML = 'Album:  <b><i>' + d.album + '</i></b>';
+      document.getElementById('track1-album').innerHTML = 'Album:  <b><i>' + d.album_title + '</i></b>';
+      if (!progress1) {
+        if (feature == "Tempo") {
+
+        }
+         else progress1 =  new RadialProgressChart('#progress1', {
+         diameter: 100,
+         max: 1,
+         round: false,
+         series: [{
+           value: d[feature],
+           color: ['red', '#7CFC00']
+         }],
+         center: function(d) {
+           return d.toFixed(2)
+         }
+       });
+      } else {
+        progress1.update(d[feature]);
+      }
     } else {
-      var value = '<div style="width: 400px; height: 400px;"><img src="' + AE.getSuitableImage(d.album.images) + '"/></div>';
+      d2 = d;
+      var value = '<div style="width: 400px; height: 400px;"><img src="' + d.image + '"/></div>';
       document.getElementById('track2-avatar').innerHTML = value;   
       document.getElementById('track2-title').innerHTML = 'Title: <b>' + d.name + '</b>';
       document.getElementById('track2-artist').innerHTML = 'Artist: <b>' + d.artist + '</b>';         
-      document.getElementById('track2-album').innerHTML = 'Album:  <b><i>' + d.album + '</i></b>';
+      document.getElementById('track2-album').innerHTML = 'Album:  <b><i>' + d.album_title + '</i></b>';
+      if (!progress2) {
+        progress2 =  new RadialProgressChart('#progress2', {
+         diameter: 100,
+         max: 1,
+         round: false,
+         series: [{
+           value: d[feature],
+           color: ['red', '#7CFC00']
+         }],
+         center: function(d) {
+           return d.toFixed(2)
+         }
+       });
+      } else {
+        progress2.update(d[feature]);
+      }
     }
     odd = !odd;
   });
