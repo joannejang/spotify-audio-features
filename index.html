@@ -54,8 +54,79 @@
                 </li>
                 
               </ul>
+                 </nav>
+  
+<!--         <div id="search" class="row">
+          <form id="search-artist" class="form-horizontal col-sm-6 col-md-6" role="form">
+            <input id="artist-search" class="form-control" placeholder="Search for an Artist">
+          </form>
+          <form id="search-genre" class="form-horizontal col-sm-6 col-md-6" role="form">
+            <input id="genre-search" class="form-control" placeholder="Search for a Genre">
+          </form>
+        </div> -->
+        <div id="feature-explanation">
+          Hover over an audio feature to learn more:
+          <ul>
+            <li class="tooltip">Danceability
+              <span class="tooltiptext">Danceability describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity. A value of 0.0 is least danceable and 1.0 is most danceable.</span>
+            </li> | 
+            <li class="tooltip">Energy
+              <span class="tooltiptext">Energy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy. For example, death metal has high energy, while a Bach prelude scores low on the scale. Perceptual features contributing to this attribute include dynamic range, perceived loudness, timbre, onset rate, and general entropy.</span>
+            </li> | 
+            <li class="tooltip">Loudness
+              <span class="tooltiptext">The overall loudness of a track in decibels (dB). Loudness values are averaged across the entire track and are useful for comparing relative loudness of tracks. Loudness is the quality of a sound that is the primary psychological correlate of physical strength (amplitude). Values typical range between -60 and 0 db.</span>
+            </li> | 
+            <li class="tooltip">Speechiness
+              <span class="tooltiptext">Speechiness detects the presence of spoken words in a track. The more exclusively speech-like the recording (e.g. talk show, audio book, poetry), the closer to 1.0 the attribute value. Values above 0.66 describe tracks that are probably made entirely of spoken words. Values between 0.33 and 0.66 describe tracks that may contain both music and speech, either in sections or layered, including such cases as rap music. Values below 0.33 most likely represent music and other non-speech-like tracks.</span>
+            </li> | 
+            <li class="tooltip">Acousticness
+              <span class="tooltiptext">A confidence measure from 0.0 to 1.0 of whether the track is acoustic. 1.0 represents high confidence the track is acoustic.</span>
+            </li> | 
+            <li class="tooltip">Instrumentalness
+              <span class="tooltiptext">  Predicts whether a track contains no vocals. "Ooh" and "aah" sounds are treated as instrumental in this context. Rap or spoken word tracks are clearly "vocal". The closer the instrumentalness value is to 1.0, the greater likelihood the track contains no vocal content. Values above 0.5 are intended to represent instrumental tracks, but confidence is higher as the value approaches 1.0.</span>
+            </li> | 
+            <li class="tooltip">Liveness
+              <span class="tooltiptext">Detects the presence of an audience in the recording. Higher liveness values represent an increased probability that the track was performed live. A value above 0.8 provides strong likelihood that the track is live.</span>
+            </li> | 
+            <li class="tooltip">Valence
+              <span class="tooltiptext">A measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track. Tracks with high valence sound more positive (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed, angry).</span>
+            </li> | 
+            <li class="tooltip">Tempo
+              <span class="tooltiptext">The overall estimated tempo of a track in beats per minute (BPM). In musical terminology, tempo is the speed or pace of a given piece and derives directly from the average beat duration.</span>
+            </li><br/>
+          </ul>
+        </div>
 
-     </nav>
+        <div id="xy-selector" class="row">
+           <button id="delete" style="float: left; margin-left: 50px; text-align: center; padding-left: 10px; padding-right: 10px">Clear Canvas</button>
+        <div id="x-scatter-selector" style="float: left">
+        <label style="width: 60px; text-align: left; float: left"> X-axis: </label>
+        <select id="x-scatter_selection">
+              <option value="popularity">Popularity</option>
+              <option value="added_at">Time Added to Playlist</option>
+            </select>
+      </div>
+
+      <div id="scatter-selector" style="float: left">
+        <label style="width: 60px; text-align: left; float: left"> Y-axis: </label>
+        <select id="scatter_selection">
+              <option value="danceability">Danceability</option> 
+              <option value="energy">Energy</option>
+              <option value="valence">Valence</option>
+              <option value="tempo">Tempo</option>
+              <option value="loudness">Loudness</option>
+              <option value="speechiness">Speechiness</option>
+              <option value="acousticness">Acousticness</option>
+              <option value="instrumentalness">Instrumentalness</option>
+              <option value="liveness">Liveness</option>
+              <option value="valence">Valence</option>
+            </select>
+      </div>
+
+
+     
+    </div>
+
     <!-- search -->
 
 
@@ -110,6 +181,7 @@
  <div id="tree-container"><!-- </div> -->
 
 
+
 <!--           <div style="display: block">TESTING DISPLAY BLOCK</div> -->
       <div class="scaling-svg-container">
         <div id="scatter-load" style="overflow: visible" class="inline"></div>
@@ -118,101 +190,51 @@
        <!--  <svg class="chart" style="overflow: visible"></svg> -->
 <!--           <svg class="chart" viewBox="500 500 500 500" preserveAspectRatio="xMidYMin meet"
    style="width: 70%; padding-top: 150px; padding-bottom: 45%; height: 1px; overflow: visible"></svg> -->
-      </div>
 
-      <div id="scatter-selector">
-        <label style="display: inline-block; width: 200px; text-align: left; float: center"> Pick an audio feature to visualize on the y-axis: </label>
-        <select id="scatter_selection">
-              <option value="danceability">Danceability</option> 
-              <option value="energy">Energy</option>
-              <option value="valence">Valence</option>
-              <option value="tempo">Tempo</option>
-              <option value="loudness">Loudness</option>
-              <option value="speechiness">Speechiness</option>
-              <option value="acousticness">Acousticness</option>
-              <option value="instrumentalness">Instrumentalness</option>
-              <option value="liveness">Liveness</option>
-              <option value="valence">Valence</option>
-            </select>
-      </div>
-
-      <div id="x-scatter-selector">
-        <label style="display: inline-block; width: 200px; text-align: left; float: center"> Pick an audio feature to visualize on the x-axis: </label>
-        <select id="x-scatter_selection">
-              <option value="popularity">Popularity</option>
-              <option value="added_at">Time Added to Playlist</option>
-            </select>
-      </div>
-
-      <button id="delete">Clear Canvas</button>
+    
 
 
-      <div id="comparison-selector">
-        <label style="display: inline-block; width: 200px; text-align: left; float: center"> Pick an audio feature to compare: </label>
-        <select id="comparison_selection">
-              <option value="danceability">Danceability</option> 
-              <option value="energy">Energy</option>
-              <option value="valence">Valence</option>
-              <option value="tempo">Tempo</option>
-              <option value="loudness">Loudness</option>
-              <option value="speechiness">Speechiness</option>
-              <option value="acousticness">Acousticness</option>
-              <option value="instrumentalness">Instrumentalness</option>
-              <option value="liveness">Liveness</option>
-              <option value="valence">Valence</option>
-            </select>
-      </div>
+    
 
-
-
-      <div id="track1" class="inline">Track 1
-          <div id="track1-avatar"></div>
-          <div id="track1-title"></div>
-          <div id="track1-artist"></div>
-          <div id="track1-album"></div>
-          <div id="progress1"></div>
-      </div>
-      <div id="track2" class="inline">Track 2
-          <div id="track2-avatar"></div>
-          <div id="track2-title"></div>
-          <div id="track2-artist"></div>
-          <div id="track2-album"></div>
-          <div id="progress2"></div>
-      </div>
-
-
-    <div id="feature-explanation">
-          Hover over an audio feature to learn more:
-          <ul>
-            <li class="tooltip">Danceability
-              <span class="tooltiptext">Danceability describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity. A value of 0.0 is least danceable and 1.0 is most danceable.</span>
-            </li> | 
-            <li class="tooltip">Energy
-              <span class="tooltiptext">Energy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy. For example, death metal has high energy, while a Bach prelude scores low on the scale. Perceptual features contributing to this attribute include dynamic range, perceived loudness, timbre, onset rate, and general entropy.</span>
-            </li> | 
-            <li class="tooltip">Loudness
-              <span class="tooltiptext">The overall loudness of a track in decibels (dB). Loudness values are averaged across the entire track and are useful for comparing relative loudness of tracks. Loudness is the quality of a sound that is the primary psychological correlate of physical strength (amplitude). Values typical range between -60 and 0 db.</span>
-            </li> | 
-            <li class="tooltip">Speechiness
-              <span class="tooltiptext">Speechiness detects the presence of spoken words in a track. The more exclusively speech-like the recording (e.g. talk show, audio book, poetry), the closer to 1.0 the attribute value. Values above 0.66 describe tracks that are probably made entirely of spoken words. Values between 0.33 and 0.66 describe tracks that may contain both music and speech, either in sections or layered, including such cases as rap music. Values below 0.33 most likely represent music and other non-speech-like tracks.</span>
-            </li> | 
-            <li class="tooltip">Acousticness
-              <span class="tooltiptext">A confidence measure from 0.0 to 1.0 of whether the track is acoustic. 1.0 represents high confidence the track is acoustic.</span>
-            </li> | 
-            <li class="tooltip">Instrumentalness
-              <span class="tooltiptext">  Predicts whether a track contains no vocals. "Ooh" and "aah" sounds are treated as instrumental in this context. Rap or spoken word tracks are clearly "vocal". The closer the instrumentalness value is to 1.0, the greater likelihood the track contains no vocal content. Values above 0.5 are intended to represent instrumental tracks, but confidence is higher as the value approaches 1.0.</span>
-            </li> | 
-            <li class="tooltip">Liveness
-              <span class="tooltiptext">Detects the presence of an audience in the recording. Higher liveness values represent an increased probability that the track was performed live. A value above 0.8 provides strong likelihood that the track is live.</span>
-            </li> | 
-            <li class="tooltip">Valence
-              <span class="tooltiptext">A measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track. Tracks with high valence sound more positive (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed, angry).</span>
-            </li> | 
-            <li class="tooltip">Tempo
-              <span class="tooltiptext">The overall estimated tempo of a track in beats per minute (BPM). In musical terminology, tempo is the speed or pace of a given piece and derives directly from the average beat duration.</span>
-            </li><br/>
-          </ul>
+    <div id="two-track-comparison" class="inline">
+        <div id="comparison-selector">
+          <label style="display: inline-block; width: 200px; text-align: left; float: center"> Pick an audio feature to compare: </label>
+          <select id="comparison_selection">
+                <option value="danceability">Danceability</option> 
+                <option value="energy">Energy</option>
+                <option value="valence">Valence</option>
+                <option value="tempo">Tempo</option>
+                <option value="loudness">Loudness</option>
+                <option value="speechiness">Speechiness</option>
+                <option value="acousticness">Acousticness</option>
+                <option value="instrumentalness">Instrumentalness</option>
+                <option value="liveness">Liveness</option>
+                <option value="valence">Valence</option>
+              </select>
         </div>
+
+
+
+        <div id="track1" class="inline">Track 1
+            <div id="track1-avatar"></div>
+            <div id="track1-title"></div>
+            <div id="track1-artist"></div>
+            <div id="track1-album"></div>
+            <div id="progress1"></div>
+        </div>
+        <div id="track2" class="inline">Track 2
+            <div id="track2-avatar"></div>
+            <div id="track2-title"></div>
+            <div id="track2-artist"></div>
+            <div id="track2-album"></div>
+            <div id="progress2"></div>
+        </div>
+      </div>
+
+      </div>
+
+
+    
 
 </div>
 
@@ -505,6 +527,8 @@ function showScatterPlot(data, feature, curr_feature_x_scatter_scope) {
           }
         });
      }
+     console.log(minDate);
+     console.log(maxDate);
 
     var x;
     if (curr_feature_x_scatter_scope != "added_at") {
@@ -515,7 +539,7 @@ function showScatterPlot(data, feature, curr_feature_x_scatter_scope) {
     // the range maps the domain to values from 0 to the width minus the left and right margins (used to space out the visualization)
         .range([0, width - margins.left - margins.right]);
     } else { // date
-      x = d3.time.scale().domain([minDate, maxDate]).range([0, width - margins.left - margins.right]);
+      x = d3.time.scale().domain([minDate, maxDate]).range([width - margins.left - margins.right, 0]);
     }
 
 

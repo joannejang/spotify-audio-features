@@ -423,6 +423,8 @@ var user_playlists;
     }
 
     function createAutoCompleteDivTrack(track) {
+        console.log("426");
+        console.log(track);
         if (!track) {
             return;
         }
@@ -583,7 +585,7 @@ var user_playlists;
     }
 
     function getSuitableImage(images) {
-        var minSize = 100; //64;
+        var minSize = 500; //64;
         if (images.length === 0) {
             return 'img/spotify.jpeg';
         }
@@ -593,7 +595,7 @@ var user_playlists;
             }
         });
 
-        return images[images.length - 1].url;
+        return images[0].url;
     }
 
     var currentLink;

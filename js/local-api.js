@@ -67,7 +67,7 @@ var localProxyApi = function (serverBasePath) {
 
   var getAudioFeatures = function(trackId) {
 
-    console.log(user_accessToken);
+    //console.log(user_accessToken);
     var url = serverBasePath + '/v1/audio-features/' + trackId;
     return $.ajax({
       headers: {

@@ -21,7 +21,7 @@ h4 {
  position: relative; 
  display: inline-block;
  height: 0; 
- width: 700px;
+ width: 80%;
  padding-top: 100px;
  padding-left: 50px;
  padding-right: 150px;
@@ -29,13 +29,18 @@ h4 {
   /*override this inline for aspect ratio other than square  */
 }
 
-#scatter-load {
-	overflow: visible;
+#svg {
+  float: left;
 }
 
-#scatter-selector, #feature-explanation {
-	float: center;
-	padding: 20px;
+#scatter-load {
+	overflow: visible;
+  float: left;
+  display: inline-block;
+}
+#feature-explanation {
+  margin-top: 20px;
+  margin-left: 25px;
 }
 
 .inline {
@@ -170,10 +175,23 @@ h4 {
   overflow: hidden;
 }
 
+#two-track-comparison {
+  float: left;
+  display: inline-block;
+  overflow: visible;
+}
+
 #tracks {
 	padding-top: 10px;
 	padding-bottom: 5px;
 }
+
+#x-scatter-selector, #scatter-selector {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+
 
 #track-one {
 	padding-right: 2px;
