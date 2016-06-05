@@ -201,7 +201,7 @@ var user_playlists;
                 d3.select("svg").remove();
                 console.log("BELOW IS THE ENTIRE DATASET");
                 console.log(dataset);
-                showScatterPlot(dataset, curr_feature, curr_feature_x);
+                showScatterPlot(dataset, curr_feature, curr_feature_x, labels);
                 //update_scatter(object_to_add);
                 update_track(dataset, true);
                 //document.getElementById('progress1').innerHTML = "";
@@ -226,7 +226,7 @@ var user_playlists;
     function update_track(track_obj, one) {
         $('#progress1').empty();
         if (one) {
-            var value = '<div style="width: 400px; height: 400px;"><img src="' + track_obj[track_obj.length-1].image + '"/></div>';
+            var value = '<div style="width: 400px; height: 400px"><img src="' + track_obj[track_obj.length-1].image + '"/></div>';
             document.getElementById('track-one').innerHTML = value;   
             document.getElementById('track-title').innerHTML = 'Title: <b>' + track_obj[track_obj.length-1].name + '</b>';
             document.getElementById('track-artist').innerHTML = 'Artist: <b>' + track_obj[track_obj.length-1].artist + '</b>';         
@@ -809,7 +809,7 @@ var user_playlists;
         console.log(curr_dataset);
         dataset = curr_dataset;
         console.log(dataset);
-        showScatterPlot(dataset, curr_feature, curr_feature_x);
+        showScatterPlot(dataset, curr_feature, curr_feature_x, labels);
     }
 
 

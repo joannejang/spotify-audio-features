@@ -21,8 +21,8 @@ h4 {
  position: relative; 
  display: inline-block;
  height: 0; 
- width: 80%;
- padding-top: 100px;
+ width: 70%;
+ margin-top: 230px;
  padding-left: 50px;
  padding-right: 150px;
  padding-bottom: 520px; 
@@ -176,9 +176,10 @@ h4 {
 }
 
 #two-track-comparison {
-  float: left;
-  display: inline-block;
+  float: center;
+  display: block;
   overflow: visible;
+  margin-left: 25px;
 }
 
 #tracks {
@@ -191,19 +192,36 @@ h4 {
   padding-right: 10px;
 }
 
+#track1-avatar, #track2-avatar {
+  width: 200px;
+  height: 200px;
+}
+
+#track1 img, #track2 img {
+  width: 200px;
+  height: 200px;
+}
+#track1 {
+  margin-left: 25px;
+  margin-right: 50px;
+}
+
+#track2 {
+  margin-left: 50px;
+}
 
 
 #track-one {
 	padding-right: 2px;
 	display: block;
 	float: center;
-	height: 100px;
-	width: 100px;
+	height: 200px;
+	width: 200px;
 }
 
 #track-one img {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     padding: 0px 5px 0px 5px;
     overflow: hidden;
 

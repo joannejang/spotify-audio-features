@@ -123,6 +123,11 @@
             </select>
       </div>
 
+      <div class="squaredFour" style="float: left; margin-left: 60px">
+        <input type="checkbox" checked="checked" id="squaredFour" name="check" onclick="switchLabels()"/>
+        <label for="squaredFour">Show labels</label>
+      </div>
+
 
      
     </div>
@@ -141,12 +146,13 @@
                 <input id="artist-search" class="form-control" placeholder="Search">
               </form>
                       <div id="tracks">
-          <div id="track-one"></div>
+          
           <!-- <div id="track-two">TRACK TWO TEST</div> -->
         </div>
 
 
         <div id="track-metadata">
+            <div id="track-one"></div>
            <div id="track-title"></div>
             <div id="track-artist"></div>
             <div id="track-album"></div>
@@ -191,14 +197,13 @@
 <!--           <svg class="chart" viewBox="500 500 500 500" preserveAspectRatio="xMidYMin meet"
    style="width: 70%; padding-top: 150px; padding-bottom: 45%; height: 1px; overflow: visible"></svg> -->
 
-    
-
 
     
 
-    <div id="two-track-comparison" class="inline">
+</div>
+ <div id="two-track-comparison" style="float: center">
         <div id="comparison-selector">
-          <label style="display: inline-block; width: 200px; text-align: left; float: center"> Pick an audio feature to compare: </label>
+          <label style="display: inline-block; width: 300px; text-align: left; float: center"> Click on two points to compare their audio features: </label>
           <select id="comparison_selection">
                 <option value="danceability">Danceability</option> 
                 <option value="energy">Energy</option>
@@ -215,14 +220,14 @@
 
 
 
-        <div id="track1" class="inline">Track 1
+        <div id="track1" class="inline">
             <div id="track1-avatar"></div>
             <div id="track1-title"></div>
             <div id="track1-artist"></div>
             <div id="track1-album"></div>
             <div id="progress1"></div>
         </div>
-        <div id="track2" class="inline">Track 2
+        <div id="track2" class="inline">
             <div id="track2-avatar"></div>
             <div id="track2-title"></div>
             <div id="track2-artist"></div>
@@ -232,11 +237,6 @@
       </div>
 
       </div>
-
-
-    
-
-</div>
 
 
 
@@ -279,7 +279,7 @@ var d2;
 d3.select('#delete').on('click', function() {
   dataset = [];
   d3.select("svg").remove();
-  showScatterPlot(dataset, curr_feature, curr_feature_x);
+  showScatterPlot(dataset, curr_feature, curr_feature_x, labels);
 });
 
 d3.select('#comparison_selection').on('change', function() {
@@ -477,6 +477,8 @@ var dataset = [ {
 
 var curr_feature = "danceability";
 var curr_feature_x = "popularity";
+
+var labels = true;
 // var dataset = d3.json("init_playlist.json", function(data) {
 //   dataset = data;
 // });
@@ -486,9 +488,15 @@ var curr_feature_x = "popularity";
 
 
 // call the method below
-showScatterPlot(dataset, curr_feature, curr_feature_x);
+showScatterPlot(dataset, curr_feature, curr_feature_x, labels);
 
-function showScatterPlot(data, feature, curr_feature_x_scatter_scope) {
+function switchLabels() {
+  labels = !labels;
+  d3.select("svg").remove();
+  showScatterPlot(dataset, curr_feature, curr_feature_x, labels);
+}
+
+function showScatterPlot(data, feature, curr_feature_x_scatter_scope, labels) {
     // just to have some space around items. 
     var margins = {
         "left": 40,
@@ -614,14 +622,17 @@ function showScatterPlot(data, feature, curr_feature_x_scatter_scope) {
             return colors(d.name);
     });
 
-    // now we add some text, so we can see what each item is.
-    chocolateGroup.append("text")
+    if (labels) {
+        // now we add some text, so we can see what each item is.
+      chocolateGroup.append("text")
         .style("text-anchor", "middle")
         .attr("dy", -10)
         .text(function (d) {
             // this shouldn't be a surprising statement.
             return d.name;
-    });
+      });
+    }
+  
 
    $('svg circle').tipsy({ 
       gravity: 'w', 
@@ -922,13 +933,13 @@ function show_popularity_chart(d) {
         d3.select('#scatter_selection').on('change', function() {
         curr_feature = d3.select(this).property('value');
         d3.select("svg").remove();
-        showScatterPlot(dataset, curr_feature, curr_feature_x);
+        showScatterPlot(dataset, curr_feature, curr_feature_x, labels);
         });
 
         d3.select('#x-scatter_selection').on('change', function() {
         curr_feature_x = d3.select(this).property('value');
         d3.select("svg").remove();
-        showScatterPlot(dataset, curr_feature, curr_feature_x);
+        showScatterPlot(dataset, curr_feature, curr_feature_x, labels);
         });
 
 
