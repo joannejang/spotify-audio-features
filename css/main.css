@@ -143,6 +143,8 @@ h4 {
   position:absolute;
   left:0px;
   right: 350px;
+  width: 100%;
+  padding-right: 50px;
 }
 
 .menu-items {
@@ -247,8 +249,8 @@ h4 {
   font-size: 15px !important;
   float: right;
   top: 0px;
-  right:0px;
-  width: 400px;
+  right:-20px;
+  width: 30%; /*400px;*/
   height: 3000px;
   position: relative;
   padding: 20px;
