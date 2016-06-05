@@ -615,7 +615,7 @@ var two_tracks = track_one + track_two;
         return localStorage.getItem('ae_token', '');
     }
     // ko.cleanNode(document.getElementById('navbar-collapse-1'));
-    // ko.applyBindings(loginModel, document.getElementById('navbar-collapse-1'));
+     ko.applyBindings(loginModel, document.getElementById('navbar-collapse-1'));
 
 
     var errorBoxModel = function() {
@@ -669,6 +669,7 @@ var two_tracks = track_one + track_two;
 
             loginModel.displayName(getDisplayName(data.display_name));
             loginModel.userImage(data.images[0].url);
+            console.log(loginModel.isLoggedIn);
             localStorage.setItem('ae_userid', data.id);
             localStorage.setItem('ae_display_name', data.display_name);
             localStorage.setItem('ae_user_image', data.images[0].url);
@@ -756,6 +757,7 @@ var two_tracks = track_one + track_two;
     }
 
     function logout() {
+        console.log("log out called!");
         loginModel.isLoggedIn(false);
         loginModel.userId("");
         loginModel.displayName("");
