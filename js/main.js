@@ -186,7 +186,7 @@ var two_tracks = track_one + track_two;
                 console.log("AFTER UPDATING DATASET's one: ");
                 console.log(dataset.length);
                 console.log(dataset);
-                var object_to_add = {"name": track.name, "popularity": track.popularity, "preview_url": track.preview_url, "artist": track.artists[0], "image": getSuitableImage(track.album.images),"danceability": data["danceability"], "valence": data["valence"], "tempo": data["tempo"], "energy": data["energy"]};
+                var object_to_add = {"name": track.name, "popularity": track.popularity, "preview_url": track.preview_url, "artist": track.artists[0], "album_title": track.album.name, "image": getSuitableImage(track.album.images),"danceability": data["danceability"], "valence": data["valence"], "tempo": data["tempo"], "energy": data["energy"]};
                 console.log(object_to_add);
                 dataset[dataset.length] = object_to_add;
                 d3.select("svg").remove();
