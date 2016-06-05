@@ -727,8 +727,10 @@ var user_playlists;
             chosen_playlist_tracks.items.forEach(function (track_obj) {
                 var track = track_obj.track;
                 dataset[dataset.length] = {"id": track.id, "name": track.name, "popularity": track.popularity, "preview_url": track.preview_url, "artist": track.artists[0].name, "album_title": track.album.name, "image": getSuitableImage(track.album.images)};
-                var promise = currentApi.getAudioFeatures(track.id);
-                promises.push(promise);
+                if (track.id) {
+                    var promise = currentApi.getAudioFeatures(track.id);
+                    promises.push(promise);
+                }
             });
 
             Promise.all(promises).then(function (data) {
