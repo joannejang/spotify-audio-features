@@ -19,6 +19,7 @@ h4 {
 
 .scaling-svg-container { /* width: 700px, padding-bottom: 100% */;
  position: relative; 
+ display: inline-block;
  height: 0; 
  width: 700px;
  padding-top: 100px;
@@ -35,6 +36,10 @@ h4 {
 #scatter-selector, #feature-explanation {
 	float: center;
 	padding: 20px;
+}
+
+.inline {
+  display: inline-block;
 }
 
 /*.chart {

@@ -676,6 +676,7 @@ var two_tracks = track_one + track_two;
                     $('#artist-search').val(ui.item.name);
                     consoleLogAudioFeatures(ui.item, true);
                     initRootWithTrack(ui.item, true);
+                    $('#artist-search').val('');
                     //consoleLogAudioFeatures(ui.item);
                     return false;
                 }

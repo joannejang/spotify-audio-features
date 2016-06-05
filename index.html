@@ -56,8 +56,8 @@
         </div>
 
 
-             <div id="track-metadata">
-          <div id="track-title"></div>
+        <div id="track-metadata">
+           <div id="track-title"></div>
             <div id="track-artist"></div>
             <div id="track-album"></div>
             
@@ -93,7 +93,9 @@
 
 <!--           <div style="display: block">TESTING DISPLAY BLOCK</div> -->
       <div class="scaling-svg-container">
-        <div id="scatter-load" style="overflow: visible"></div>
+        <div id="scatter-load" style="overflow: visible" class="inline"></div>
+
+        
        <!--  <svg class="chart" style="overflow: visible"></svg> -->
 <!--           <svg class="chart" viewBox="500 500 500 500" preserveAspectRatio="xMidYMin meet"
    style="width: 70%; padding-top: 150px; padding-bottom: 45%; height: 1px; overflow: visible"></svg> -->
@@ -107,7 +109,22 @@
               <option value="valence">Valence</option>
               <option value="tempo">Tempo</option>
             </select>
-          </div>
+      </div>
+
+      <div id="track1" class="inline">Track 1
+          <div id="track1-title"></div>
+          <div id="track1-artist"></div>
+          <div id="track1-album"></div>
+          <div id="progress1"></div>
+      </div>
+      <div id="track2" class="inline">Track 2
+          <div id="track2-title"></div>
+          <div id="track2-artist"></div>
+          <div id="track2-album"></div>
+          <div id="progress2"></div>
+      </div>
+
+
     <div id="feature-explanation">
           Hover over an audio feature to learn more:
           <ul>
@@ -142,69 +159,7 @@
         </div>
 
 </div>
-<!-- 
-          <div id="bar-chart" style="width: 200px; float: left">
-            <label style="display: inline-block; width: 200px; text-align: left">
-               Pick an audio feature to visualize using bar chart
-            </label>
-            <select id="bar_selection">
-              <option value="danceability">Danceability</option> 
-              <option value="energy">Energy</option> 
-              <option value="loudness">Loudness</option>
-              <option value="speechiness">Speechiness</option>
-              <option value="acousticness">Acousticness</option>
-              <option value="instrumentalness">Instrumentalness</option>
-              <option value="liveness">Liveness</option>
-              <option value="valence">Valence</option>
-              <option value="tempo">Tempo</option>
-            </select>
-            <svg class="bar"></svg>
-        </div>
-          <div id="gauge-chart" style="width: 200px; float: left">
-            <label style="display: inline-block; width: 200px; text-align: left">
-               Pick an audio feature to visualize using gauge chart
-            </label>
-            <select id="gauge_selection">
-              <option value="danceability">Danceability</option> 
-              <option value="energy">Energy</option> 
-              <option value="loudness">Loudness</option>
-              <option value="speechiness">Speechiness</option>
-              <option value="acousticness">Acousticness</option>
-              <option value="instrumentalness">Instrumentalness</option>
-              <option value="liveness">Liveness</option>
-              <option value="valence">Valence</option>
-              <option value="tempo">Tempo</option>
-            </select>
-              <div id="chart_div1" style="width: 200px; height: 120px; float: left"></div>
-            <div id="chart_div2" style="width: 200px; height: 120px; float: left"></div>
-          </div>
-    </div>
 
-          <div class="main-container"> -->
-       <!--    <div id="radial-progress" style="float: left; width: 200px">
-
-          <div class="container"> -->
-              <!-- <div>
-                <label style="display: inline-block; width: 200px; text-align: left">
-                   Pick an audio feature to visualize using radial progress chart
-                </label>
-                <select id="radial_selection">
-                  <option value="danceability">Danceability</option> 
-                  <option value="energy">Energy</option> 
-                  <option value="loudness">Loudness</option>
-                  <option value="speechiness">Speechiness</option>
-                  <option value="acousticness">Acousticness</option>
-                  <option value="instrumentalness">Instrumentalness</option>
-                  <option value="liveness">Liveness</option>
-                  <option value="valence">Valence</option>
-                  <option value="tempo">Tempo</option>
-                </select>
-              </div>
-              <div id="progress1" style="width: 100px"></div>
-              <div id="progress2" style="width: 100px"></div>
-          </div> -->
-       <!--  </div> 
-    </div> --> 
 
 
 
@@ -444,15 +399,58 @@ function showScatterPlot(data, feature) {
             return d.name;
     });
 
-     $('svg circle').tipsy({ 
-        gravity: 'w', 
-        html: true, 
-        title: function() {
-          var d = this.__data__;
-          var name = d.name, artist = d.artist, popularity = d.popularity;
-          return '"' + name + '" - ' + artist + '<br/>Popularity: ' + popularity;
+   $('svg circle').tipsy({ 
+      gravity: 'w', 
+      html: true, 
+      title: function() {
+        var d = this.__data__;
+        var name = d.name, artist = d.artist, popularity = d.popularity, curr_feature = d[curr_feature];
+        return '"' + name + '" - ' + artist + '<br/>Popularity: ' + popularity;
+        //+ toTitleCase(curr_feature) + ': ' + curr_feature;
+      }
+    });
+     
+     
+    var volume = 0.5;
+    var audio = new Audio();
+    audio.volume = volume;
+
+    var currentPlayingSongId = null;
+
+    function setVolume(vol) {
+        volume = vol;
+        audio.volume = vol;
+    }
+
+    function playForTrack(track_to_play) {
+        if (currentPlayingSongId == track_to_play.id) {
+            return;
         }
-      });
+
+        audio.setAttribute('src', track_to_play.preview_url);
+        audio.load();
+        audio.play();
+
+        currentPlayingSongId = track_to_play.id;
+    }
+
+    function clearMusic() {
+        if (audio) {
+            audio.pause();
+        }
+        currentPlayingSongId = null;
+    }
+
+
+   $('svg circle').mouseover(function() {
+      var d = this.__data__;
+      playForTrack({preview_url: d.preview_url, id:d.id});
+    });
+
+
+   $('svg circle').mouseout(function() {
+      clearMusic();
+    });
 }
 
   function toTitleCase(str) {
