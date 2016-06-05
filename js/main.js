@@ -726,7 +726,7 @@ var user_playlists;
             console.log(chosen_playlist_tracks);
             chosen_playlist_tracks.items.forEach(function (track_obj) {
                 var track = track_obj.track;
-                dataset[dataset.length] = {"id": track.id, "name": track.name, "popularity": track.popularity, "preview_url": track.preview_url, "artist": track.artists[0].name, "album_title": track.album.name, "image": getSuitableImage(track.album.images)};
+                dataset[dataset.length] = {"id": track.id, "name": track.name, "popularity": track.popularity, "preview_url": track.preview_url, "artist": track.artists[0].name, "album_title": track.album.name, "image": getSuitableImage(track.album.images), "added_at": track_obj.added_at, "added_by": track_obj.added_by};
                 if (track.id) {
                     var promise = currentApi.getAudioFeatures(track.id);
                     promises.push(promise);
