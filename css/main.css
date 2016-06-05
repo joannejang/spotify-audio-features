@@ -197,10 +197,13 @@ h4 {
     overflow: hidden;
 
 }
-
+#choose-playlist-button {
+  padding-top: 100px;
+  padding-bottom: 5px;
+}
 #search {
   padding-bottom: 5px;
-  padding-top: 100px;
+  padding-top: 50px;
 }
 
 #search-artist {
