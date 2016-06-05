@@ -118,33 +118,7 @@ var two_tracks = track_one + track_two;
 
         }, false);
 
-        // var formTrack = document.getElementById('search-track');
-        // formTrack.addEventListener('submit', function (e) {
-        //     showCompletion = false;
-        //     e.preventDefault();
-        //     var search = document.getElementById('track-search');
-        //     currentApi.searchTracks(
-        //         search.value.trim(),
-        //         userCountry
-        //         ).then(function (data) {
-        //         if (data.tracks && data.tracks.items.length) {
-        //             console.log(data.tracks.items[0]);
-        //             consoleLogAudioFeatures(ui.item);
-        //             initRootWithTrack(data.tracks.items[0]);
-        //         }
-        //     });
-        //        // update_all(dataset);
 
-        // }, false);
-
-        // var formGenre = document.getElementById('search-genre');
-        // formGenre.addEventListener('submit', function (e) {
-        //     showCompletion = false;
-        //     e.preventDefault();
-        //     var search = document.getElementById('genre-search');
-        //     var genreName = search.value.trim();
-        //     initRootWithGenre(genreName);
-        // }, false);
 
     }, false);
 
@@ -235,6 +209,7 @@ var two_tracks = track_one + track_two;
         });
         console.log("bye from 183");
 
+
     }
 
     function update_track(track_obj, one) {
@@ -258,16 +233,6 @@ var two_tracks = track_one + track_two;
         $('#genre-search').val('');
     }
 
-
-    // function loadAllGenres() {
-    //     $.ajax({
-    //         url: loadAllGenresUri
-    //     }).done(function (data) {
-    //         data.genres.forEach(function (genre) {
-    //             allGenres.push(toTitleCase(genre.name));
-    //         });
-    //     });
-    // }
 
     function toTitleCase(str) {
         return str.replace(/\w\S*/g, function (txt) {return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
@@ -427,26 +392,6 @@ var two_tracks = track_one + track_two;
         });
     }
 
-    // function getAudioFeaturesForTrack(trackName) {
-    //     return new Promise(function (resolve, reject) {
-    //         return $.ajax({
-    //             url: getGenreArtistsUri(encodeURIComponent(genreName.toLowerCase()))
-    //         }).then(function (data) {
-    //             var idsToRequest = [];
-    //             data.artists.forEach(function (artist) {
-    //                 if (artist.foreign_ids) {
-    //                     idsToRequest.push(getIdFromArtistUri(artist.foreign_ids[0].foreign_id));
-    //                 }
-    //             });
-    //             return currentApi.getAudioFeatures(idsToRequest).then(function (data) {
-    //                 //Sort in popularity order
-    //                 resolve(data.artists.sort(function (a, b) {
-    //                     return b.popularity - a.popularity;
-    //                 }).slice(0, numberOfArtistsToShow));
-    //             });
-    //         });
-    //     });
-    // }
 
     function changeNumberOfArtists(value) {
         numberOfArtistsToShow = value;
@@ -494,90 +439,6 @@ var two_tracks = track_one + track_two;
         unavailCountryMessageSet = true;
     }
 
-    // $(function () {
-    //     $('#artist-search')
-    //         // don't navigate away from the field on tab when selecting an item
-    //         .bind('keydown', function (event) {
-    //             showCompletion = true;
-    //             if (event.keyCode === $.ui.keyCode.TAB &&
-    //                 $(this).autocomplete('instance').menu.active) {
-    //                 event.preventDefault();
-    //             }
-    //         })
-    //         .autocomplete({
-    //             minLength: 0,
-    //             source: function (request, response) {
-    //                 currentApi.searchArtists(request.term + '*', {'limit': 50, market: userCountry}).then(function (data) {
-    //                     if (data.artists && data.artists.items.length) {
-    //                         var res = [];
-    //                         data.artists.items.forEach(function (artist) {
-    //                             res.push(artist);
-    //                         });
-    //                         if (showCompletion) {
-    //                             response(res);
-    //                         } else {
-    //                             response([]);
-    //                         }
-    //                     }
-    //                 }, function (err) {
-    //                     if (err.status == 400) {
-    //                         setUnavailCountryErrorMessage();
-    //                         return;
-    //                     }
-    //                 });
-    //             },
-    //             focus: function () {
-    //                 // prevent value inserted on focus
-    //                 return false;
-    //             },
-    //             select: function (event, ui) {
-    //                 $('#artist-search').val(ui.item.name);
-    //                 initRootWithArtist(ui.item);
-    //                 return false;
-    //             }
-    //         })
-    //         .autocomplete('instance')._renderItem = function (ul, item) {
-    //             if (!item) {
-    //                 console.log('no item');
-    //                 return;
-    //             }
-    //             return $('<li></li>')
-    //                 .data('item.autocomplete', item)
-    //                 .append(createAutoCompleteDivArtist(item))
-    //                 .appendTo(ul);
-    //         };
-
-        // $('#genre-search')
-        //     // don't navigate away from the field on tab when selecting an item
-        //     .bind('keydown', function (event) {
-        //         showCompletion = true;
-        //         if (event.keyCode === $.ui.keyCode.TAB &&
-        //             $(this).autocomplete('instance').menu.active) {
-        //             event.preventDefault();
-        //         }
-        //         if (event.keyCode == 13) {
-        //             $('.ui-menu-item').hide();
-        //         }
-        //     })
-        //     .autocomplete({
-        //         minLength: 0,
-        //         source: function (request, response) {
-        //             if (showCompletion) {
-        //                 response($.ui.autocomplete.filter(allGenres, request.term));
-        //             } else {
-        //                 response([]);
-        //             }
-        //         },
-        //         focus: function (e, ui) {
-        //             // prevent value inserted on focus
-        //             return false;
-        //         },
-        //         select: function (event, ui) {
-        //             $('#genre-search').val(ui.item.value);
-        //             initRootWithGenre(ui.item.value);
-        //             return false;
-        //         }
-        //     });
     $(function () {
 
         $('#track-search')
@@ -771,8 +632,10 @@ var two_tracks = track_one + track_two;
         OAuthManager.obtainToken({
           scopes: [
               'playlist-read-private',
-              'playlist-modify-public',
-              'playlist-modify-private'
+              'playlist-read-collaborative',
+              'user-top-read'
+              // ,'playlist-modify-public',
+              // 'playlist-modify-private'
             ]
           }).then(function(token) {
             onTokenReceived(token);
@@ -796,18 +659,22 @@ var two_tracks = track_one + track_two;
 
     function onTokenReceived(accessToken) {
         loginModel.isLoggedIn(true);
+        user_accessToken = accessToken;
+        console.log(user_accessToken);
         spotifyWebApi.setAccessToken(accessToken);
         localStorage.setItem('ae_token', accessToken);
         localStorage.setItem('ae_expires', (new Date()).getTime() + 3600 * 1000); // 1 hour
         spotifyWebApi.getMe().then(function(data){
+            console.log(data);
             loginModel.userId(data.id);
+
             loginModel.displayName(getDisplayName(data.display_name));
             loginModel.userImage(data.images[0].url);
             localStorage.setItem('ae_userid', data.id);
             localStorage.setItem('ae_display_name', data.display_name);
             localStorage.setItem('ae_user_image', data.images[0].url);
         });
-        currentApi = spotifyWebApi;
+        //currentApi = spotifyWebApi;
     }
 
     function createPlaylistFromTrackIds(trackIds) {

@@ -39,6 +39,20 @@
          <span class="navbar-title">Audio Features Visualizer</span>
        </div>
 
+       <ul class="nav navbar-nav navbar-right">
+                <li><a  href="#" data-bind="visible: !isLoggedIn()" onClick="AE.login()">Log In</a></li>
+                <li class="dropdown" data-bind="visible: isLoggedIn()">
+                  <img class="profile-image" data-bind="attr:{src: userImage}"/>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <span id="display-name" data-bind="text: displayName"></span>
+                  <span class="icon-chevron-down"></span></a>
+                  <ul class="dropdown-menu dropdown-menu-left" role="menu">
+                    <li><a href="#" onClick="AE.logout()">Log Out</a></li>
+                  </ul>
+                </li>
+                
+              </ul>
+
      </nav>
     <!-- search -->
 
@@ -112,12 +126,14 @@
       </div>
 
       <div id="track1" class="inline">Track 1
+          <div id="track1-avatar"></div>
           <div id="track1-title"></div>
           <div id="track1-artist"></div>
           <div id="track1-album"></div>
           <div id="progress1"></div>
       </div>
       <div id="track2" class="inline">Track 2
+          <div id="track1-avatar"></div>
           <div id="track2-title"></div>
           <div id="track2-artist"></div>
           <div id="track2-album"></div>
@@ -191,6 +207,7 @@
 //         loudness:9.074, speechiness:0.0304, tempo:
 // 79.936, valence:0.37}]
 // var dataset = [{trackId: 1, danceability: 0.818, popularity: 90}, {trackId: 2, danceability: 0.575, popularity: 70}, {trackId: 3, danceability: 0.260, popularity: 80}]
+    var odd = true;
 var dataset = [ {
       "id" : "0SJPThTy7ynySPF4euczx7",
       "name" : "Work from Home",
@@ -451,6 +468,22 @@ function showScatterPlot(data, feature) {
    $('svg circle').mouseout(function() {
       clearMusic();
     });
+
+
+  $('svg circle').click(function() {
+    var d = this.__data__;
+    if (odd) {
+      var value = '<div style="width: 400px; height: 400px;"><img src="' + d.image + '"/></div>';
+      document.getElementById('track-one').innerHTML = value;   
+      document.getElementById('track-title').innerHTML = 'Title: <b>' + d.name + '</b>';
+      document.getElementById('track-artist').innerHTML = 'Artist: <b>' + d.artist + '</b>';         
+      document.getElementById('track-album').innerHTML = 'Album:  <b><i>' + d.album + '</i></b>';
+    } else {
+
+    }
+  });
+
+
 }
 
   function toTitleCase(str) {
