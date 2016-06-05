@@ -87,6 +87,15 @@ var localProxyApi = function (serverBasePath) {
     })
   };
 
+  var getPlaylistTracks = function(href) {
+    return $.ajax({
+      headers: {
+        'Authorization': 'Bearer ' + user_accessToken
+      },
+      url: href
+    })
+  };
+
   return {
     getArtistRelatedArtists: getArtistRelatedArtists,
     getArtist: getArtist,
@@ -96,7 +105,8 @@ var localProxyApi = function (serverBasePath) {
     getAudioFeatures: getAudioFeatures,
     searchTracks: searchTracks,
     getTrack: getTrack,
-    getUserPlaylists: getUserPlaylists
+    getUserPlaylists: getUserPlaylists,
+    getPlaylistTracks: getPlaylistTracks
   }
 
 };

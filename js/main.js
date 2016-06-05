@@ -6,7 +6,11 @@ var track_one;
 var track_two;
 var two_tracks = track_one + track_two;
 
+
+
 var chosen_playlist;
+var chosen_playlist_tracks;
+var user_playlists;
 /* global SpotifyWebApi, dndTree, $, geoplugin_countryCode, Promise, google, setRepeatArtists */
 (function () {
     'use strict';
@@ -689,12 +693,13 @@ var chosen_playlist;
         } else {
             currentApi.getUserPlaylists(loginModel.userId()).then(function (data) {
                 console.log(data);
+                user_playlists = data;
                 var value = "Your playlists:<br/>";
                 value += "<table id=\"playlist-list\" class=\"table\">";
                 value += "<thead><tr><th>Name</th><th><# Tracks></th><th>Owner</th></tr></thead>";
                 value += "<tbody>"
                 for (var i = 0; i < data.items.length; i++) {
-                    value += "<tr><th>" + data.items[i].name + "</th><th>" + data.items[i].tracks.total + "</th><th>" + data.items[i].owner.id + "</th></tr>";
+                    value += "<tr class='clickable-row' onClick='AE.loadPlaylist(" + i + ")'><th>" + data.items[i].name + "</th><th>" + data.items[i].tracks.total + "</th><th>" + data.items[i].owner.id + "</th></tr>";
                 }
                 value += "</tbody></table>"
 
@@ -705,6 +710,156 @@ var chosen_playlist;
         }
 
     }
+
+    function loadPlaylist(index) {
+        chosen_playlist = user_playlists.items[index];
+        console.log(chosen_playlist);
+
+        dataset = [];
+
+
+        currentApi.getPlaylistTracks(chosen_playlist.tracks.href).then(function (track_objects) {
+            chosen_playlist_tracks = track_objects;
+        }).then(function() {
+            var promises = []
+            console.log("logging chosen_playlist_tracks");
+            console.log(chosen_playlist_tracks);
+            chosen_playlist_tracks.items.forEach(function (track_obj) {
+                var track = track_obj.track;
+                dataset[dataset.length] = {"id": track.id, "name": track.name, "popularity": track.popularity, "preview_url": track.preview_url, "artist": track.artists[0].name, "album_title": track.album.name, "image": getSuitableImage(track.album.images)};
+                var promise = currentApi.getAudioFeatures(track.id);
+                promises.push(promise);
+            });
+
+            Promise.all(promises).then(function (data) {
+                console.log("printing from inside 731");
+                console.log(data); // audio feature object
+                console.log(dataset);
+
+                for (var i = 0; i < data.length; i++) {
+                       dataset[i].danceability = data[i]["danceability"];
+                        dataset[i].valence = data[i]["valence"];
+                        dataset[i].tempo = data[i]["tempo"];
+                        dataset[i].energy = data[i]["energy"];
+                        dataset[i].loudness = data[i]["loudness"];
+                        dataset[i].speechiness = data[i]["speechiness"];
+                        dataset[i].acousticness = data[i]["acousticness"];
+                        dataset[i].instrumentalness = data[i]["instrumentalness"];
+                        dataset[i].liveness = data[i]["liveness"];  
+                        //console.log(dataset[i]);
+                }
+                showScatterPlotUsingPlaylist(dataset);
+                
+
+                // var audio_feature_promises = []
+                // for (var i = 0; i < data.length; i++) {
+                //     console.log(i);
+                    // var promise_af = function(i) {
+                    //     dataset[i].danceability = data[i]["danceability"];
+                    //     dataset[i].valence = data[i]["valence"];
+                    //     dataset[i].tempo = data[i]["tempo"];
+                    //     dataset[i].energy = data[i]["energy"];
+                    //     dataset[i].loudness = data[i]["loudness"];
+                    //     dataset[i].speechiness = data[i]["speechiness"];
+                    //     dataset[i].acousticness = data[i]["acousticness"];
+                    //     dataset[i].instrumentalness = data[i]["instrumentalness"];
+                    //     dataset[i].liveness = data[i]["liveness"];  
+                    //     console.log(dataset[i]);
+                    //     return dataset[i];                      
+                    // };
+                   // audio_feature_promises.push(promise_af);
+              //  }
+
+                // Promise.all(audio_feature_promises).then(function (dataset_item) {
+                //     console.log(dataset_item);
+                // });
+
+
+               // then(setDataset(dataset)).then(console.log(dataset)).then(showScatterPlot());
+
+              //  )
+                // for (var i = 0; i < data.length; i++) {
+                //     dataset[i].danceability = data[i]["danceability"];
+                //     dataset[i].valence = data[i]["valence"];
+                //     dataset[i].tempo = data[i]["tempo"];
+                //     dataset[i].energy = data[i]["energy"];
+                //     dataset[i].loudness = data[i]["loudness"];
+                //     dataset[i].speechiness = data[i]["speechiness"];
+                //     dataset[i].acousticness = data[i]["acousticness"];
+                //     dataset[i].instrumentalness = data[i]["instrumentalness"];
+                //     dataset[i].liveness = data[i]["liveness"];
+                //     console.log(dataset[i]);
+                // }
+                    
+            });
+});
+    //         }).then(console.log(dataset)).then(showScatterPlot());
+    // console.log(dataset);
+}
+
+    function showScatterPlotUsingPlaylist(curr_dataset) {
+        d3.select("svg").remove();
+        console.log("PRINTING FROM SETDATASET");
+        console.log(curr_dataset);
+        dataset = curr_dataset;
+        console.log(dataset);
+        showScatterPlot(dataset, curr_feature);
+    }
+
+
+
+////        });
+       
+
+
+        
+        // var track_objects = currentApi.getPlaylistTracks(chosen_playlist.tracks.href);
+        // console.log(track_objects);
+
+     //    .then(function (tracks_obj) {
+     //            console.log(tracks_obj);
+     //            tracks_objects = tracks_obj;
+
+     //            })
+     //        }   
+
+     //    };
+     //    var getPlaylistTracks = module.getPlaylistTracks;
+
+     // var boundPlaylistTracks = getPlaylistTracks.bind(module);
+     // boundPlaylistTracks();
+     // console.log("PRINTING OUT TRACKS_OBJECTS");
+     // console.log(tracks_objects);
+     // var tracks_obj = tracks_objects;
+
+     //           for (var i = 0; i < tracks_obj.items.length; i++) {
+     //            var track = tracks_obj.items[i].track;
+     //            console.log(track);
+     //            var that = this;
+     //                currentApi.getAudioFeatures(track.id).then(function(data) {
+     //                    var track = that.track;
+     //                    console.log("ABOUT TO LOAD THAT.TRACK");
+     //                    console.log(track);
+     //                    var object_to_add = {"id": track.id, "name": track.name, "popularity": track.popularity, "preview_url": track.preview_url, "artist": track.artists[0].name, "album_title": track.album.name, "image": getSuitableImage(track.album.images),"danceability": data["danceability"], "valence": data["valence"], "tempo": data["tempo"], "energy": data["energy"], "loudness": data["loudness"], "speechiness": data["speechiness"], "acousticness": data["acousticness"], "instrumentalness": data["instrumentalness"], "liveness": data["liveness"] };
+     //                    console.log(object_to_add);
+     //                    that_that.dataset[that.i] = object_to_add;
+     //                   // console.log(dataset[i]);
+     //                });
+     //            }
+    
+        // console.log("DATASET AFTER LOADING PLAYLIST");
+        // console.log(dataset);
+        // showScatterPlot();
+
+
+
+
+
+        // "danceability": data["danceability"], "valence": data["valence"], "tempo": data["tempo"], "energy": data["energy"], "loudness": data["loudness"], "speechiness": data["speechiness"], "acousticness": data["acousticness"], "instrumentalness": data["instrumentalness"], "liveness": data["liveness"] 
+        // should make a separate playlist's tracks call based on ID.
+        //track is track object, data is audio features.
+        
+   // }
 
     function createPlaylistFromTrackIds(trackIds) {
         spotifyWebApi.createPlaylist(loginModel.userId(), {
@@ -810,6 +965,7 @@ var chosen_playlist;
         createPlaylistModal: createPlaylistModal,
         createPlaylist: createPlaylist,
         logout: logout,
-        choosePlaylist: choosePlaylist
+        choosePlaylist: choosePlaylist,
+        loadPlaylist: loadPlaylist
     };
 })();
