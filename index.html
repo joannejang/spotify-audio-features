@@ -121,7 +121,7 @@
       </div>
 
       <div id="scatter-selector">
-        <label style="display: inline-block; width: 200px; text-align: left; float: center"> Pick an audio feature to visualize: </label>
+        <label style="display: inline-block; width: 200px; text-align: left; float: center"> Pick an audio feature to visualize on the y-axis: </label>
         <select id="scatter_selection">
               <option value="danceability">Danceability</option> 
               <option value="energy">Energy</option>
@@ -133,6 +133,14 @@
               <option value="instrumentalness">Instrumentalness</option>
               <option value="liveness">Liveness</option>
               <option value="valence">Valence</option>
+            </select>
+      </div>
+
+      <div id="x-scatter-selector">
+        <label style="display: inline-block; width: 200px; text-align: left; float: center"> Pick an audio feature to visualize on the x-axis: </label>
+        <select id="x-scatter_selection">
+              <option value="popularity">Popularity</option>
+              <option value="added_at">Time Added to Playlist</option>
             </select>
       </div>
 
@@ -249,7 +257,7 @@ var d2;
 d3.select('#delete').on('click', function() {
   dataset = [];
   d3.select("svg").remove();
-  showScatterPlot();
+  showScatterPlot(dataset, curr_feature, curr_feature_x);
 });
 
 d3.select('#comparison_selection').on('change', function() {
@@ -365,7 +373,7 @@ var dataset = [ {
 ];
 
 var curr_feature = "danceability";
-var curr_feature_x = "added_at";
+var curr_feature_x = "popularity";
 // var dataset = d3.json("init_playlist.json", function(data) {
 //   dataset = data;
 // });
@@ -377,7 +385,7 @@ var curr_feature_x = "added_at";
 // call the method below
 showScatterPlot(dataset, curr_feature, curr_feature_x);
 
-function showScatterPlot(data, feature) {
+function showScatterPlot(data, feature, curr_feature_x_scatter_scope) {
     // just to have some space around items. 
     var margins = {
         "left": 40,
@@ -404,17 +412,24 @@ function showScatterPlot(data, feature) {
       return new Date(d.added_at);
     }
 
-    var minDate = new Date("2014, 1, 1");
-    var maxDate = new Date("2016, 6, 3");
-    // if (curr_feature_x === "added_at") {
-
-    // }
+    var minDate = new Date();
+    var maxDate = new Date(1970, 1, 1);
+     if (curr_feature_x_scatter_scope === "added_at") {
+        dataset.forEach(function (obj) {
+          var date_form = getDate(obj);
+          if (date_form > maxDate) {
+            maxDate = date_form;
+          } else if (date_form < minDate) {
+            minDate = date_form;
+          }
+        });
+     }
 
     var x;
-    if (curr_feature_x != "added_at") {
+    if (curr_feature_x_scatter_scope != "added_at") {
         x = d3.scale.linear()
         .domain(d3.extent(data, function (d) {
-        return d[curr_feature_x];
+        return d[curr_feature_x_scatter_scope];
     }))
     // the range maps the domain to values from 0 to the width minus the left and right margins (used to space out the visualization)
         .range([0, width - margins.left - margins.right]);
@@ -443,7 +458,7 @@ function showScatterPlot(data, feature) {
         .attr("text-anchor", "end")
         .attr("x", width / 2)
         .attr("y", height - 20)
-        .text(toTitleCase(curr_feature_x));
+        .text(toTitleCase(curr_feature_x_scatter_scope));
 
     svg.append("text")
         .attr("fill", "#414241")
@@ -469,11 +484,11 @@ function showScatterPlot(data, feature) {
     // we 'enter' the data, making the SVG group (to contain a circle and text) with a class node. This corresponds with what we told the data it should be above.
     
     var chocolateGroup;
-    if (curr_feature_x != "added_at") {
+    if (curr_feature_x_scatter_scope != "added_at") {
       chocolateGroup = chocolate.enter().append("g").attr("class", "node")
     // this is how we set the position of the items. Translate is an incredibly useful function for rotating and positioning items 
       .attr('transform', function (d) {
-        return "translate(" + x(d[curr_feature_x]) + "," + y(d[curr_feature]) + ")";
+        return "translate(" + x(d[curr_feature_x_scatter_scope]) + "," + y(d[curr_feature]) + ")";
       });
     } else {
       chocolateGroup = chocolate.enter().append("g").attr("class", "node")
@@ -801,8 +816,15 @@ function show_popularity_chart(d) {
         d3.select('#scatter_selection').on('change', function() {
         curr_feature = d3.select(this).property('value');
         d3.select("svg").remove();
-        showScatterPlot(dataset, curr_feature);
+        showScatterPlot(dataset, curr_feature, curr_feature_x);
         });
+
+        d3.select('#x-scatter_selection').on('change', function() {
+        curr_feature_x = d3.select(this).property('value');
+        d3.select("svg").remove();
+        showScatterPlot(dataset, curr_feature, curr_feature_x);
+        });
+
 
       // d3.select('#gauge_selection').on('change', function() {
       //   feature = d3.select(this).property('value');

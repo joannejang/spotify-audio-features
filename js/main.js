@@ -61,21 +61,21 @@ var user_playlists;
             initEntry = stripTrailingSlash(qs('tree')),
             initTrackId = stripTrailingSlash(qs('track'));
 
-        if (init_track_one_id) {
-            currentApi.getAudioFeatures(init_track_one_id).then(function (data) {
-                console.log("init track one id");
-                console.log(data);
-                track_one = data;
-            });
-        }
+        // if (init_track_one_id) {
+        //     currentApi.getAudioFeatures(init_track_one_id).then(function (data) {
+        //         console.log("init track one id");
+        //         console.log(data);
+        //         track_one = data;
+        //     });
+        // }
 
-        if (init_track_two_id) {
-            currentApi.getAudioFeatures(init_track_two_id).then(function (data) {
-                console.log("init track two id");
-                console.log(data);
-                track_two = data;
-            });
-        }
+        // if (init_track_two_id) {
+        //     currentApi.getAudioFeatures(init_track_two_id).then(function (data) {
+        //         console.log("init track two id");
+        //         console.log(data);
+        //         track_two = data;
+        //     });
+        // }
 
         // if (initEntry) {
         //     $.ajax({
@@ -689,7 +689,7 @@ var user_playlists;
 
     function choosePlaylist() {
         if (!loginModel.isLoggedIn()) {
-            console.log("Please log in first"); // change to pop-up label
+            alert("Please log in first."); // change to pop-up label
         } else {
             currentApi.getUserPlaylists(loginModel.userId()).then(function (data) {
                 console.log(data);
@@ -805,7 +805,7 @@ var user_playlists;
         console.log(curr_dataset);
         dataset = curr_dataset;
         console.log(dataset);
-        showScatterPlot(dataset, curr_feature);
+        showScatterPlot(dataset, curr_feature, curr_feature_x);
     }
 
 
