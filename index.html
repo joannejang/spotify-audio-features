@@ -529,10 +529,10 @@ function showScatterPlot(data, feature, curr_feature_x_scatter_scope, labels) {
     // the domain define the min and max variables to show. In this case, it's the min and max prices of items.
     // this is made a compact piece of code due to d3.extent which gives back the max and min of the price variable within the dataset
 
+
     function getDate(d) {
       return new Date(d.added_at);
     }
-
     var minDate = new Date();
     var maxDate = new Date(1970, 1, 1);
      if (curr_feature_x_scatter_scope === "added_at") {
@@ -540,7 +540,8 @@ function showScatterPlot(data, feature, curr_feature_x_scatter_scope, labels) {
           var date_form = getDate(obj);
           if (date_form > maxDate) {
             maxDate = date_form;
-          } else if (date_form < minDate) {
+          } 
+          if (date_form < minDate) {
             minDate = date_form;
           }
         });
