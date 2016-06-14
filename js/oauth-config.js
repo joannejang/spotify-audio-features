@@ -4,8 +4,9 @@ var OAuthConfig = (function() {
   var clientId = '89e8853e6b3f48318c38c9c6b7ded1c7';
   var redirectUri;
   //if (location.host === 'localhost:8000') {
-    redirectUri = 'http://localhost:8000/callback.html';
- // } else {
+//    redirectUri = 'http://localhost:8000/callback.html';
+    redirectUri = 'http://web.stanford.edu/~jangjj/spotify-audio-features/callback.html';
+// } else {
    // redirectUri = callback.html;
  // }
   var host = /http[s]?:\/\/[^/]+/.exec(redirectUri)[0];
